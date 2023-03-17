@@ -1,3 +1,4 @@
+class_name EnemyBase
 extends CharacterBody2D
 
 const MAX_SPEED = 75
@@ -29,3 +30,7 @@ func _move_towards_player():
 	velocity = direction * MAX_SPEED
 	move_and_slide()
 	
+
+
+func _on_hit_area_area_entered(area):
+	queue_free()

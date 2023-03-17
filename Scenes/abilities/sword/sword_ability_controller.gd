@@ -11,22 +11,34 @@ func _ready():
 	_timer.timeout.connect(_on_timer_timeout)
 	
 	
-func _on_timer_timeout():
-	var closest_enemy = _get_closest_enemy()
+func attack():
+	# Get closest enemy
+	var closest_enemy := _get_closest_enemy()
 	if not closest_enemy:
 		return
 	
+	# Instantiate sword
 	var sword := sword_ability.instantiate() as Node2D
 	get_tree().get_root().add_child(sword)
+	
+	# Position and rotation
 	sword.global_position = closest_enemy.global_position
+	sword.global_position += Vector2.RIGHT.rotated(randf_range(0.0, TAU)) * 4 # Position offset
+	
+	var enemy_direction = closest_enemy.global_position - sword.global_position
+	sword.rotation = enemy_direction.angle()
 	
 	
-func _get_closest_enemy():
+func _on_timer_timeout():
+	attack()
+	
+	
+func _get_closest_enemy() -> EnemyBase:
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	enemies = enemies.filter(_is_in_range)
 	
 	if enemies.size() == 0:
-		return
+		return null
 		
 	enemies.sort_custom(_distance_comparator)
 	return enemies[0]
