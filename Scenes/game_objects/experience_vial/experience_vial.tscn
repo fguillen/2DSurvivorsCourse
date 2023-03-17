@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://b5k02ihpc3okp"]
 
 [ext_resource type="Texture2D" uid="uid://nsva56nih115" path="res://Scenes/game_objects/experience_vial/experience_vial.png" id="1_ey4hu"]
 [ext_resource type="Script" path="res://Scenes/game_objects/experience_vial/experience_vial.gd" id="1_y1nua"]

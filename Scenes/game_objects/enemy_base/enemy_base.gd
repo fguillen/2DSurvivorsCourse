@@ -24,7 +24,6 @@ func _get_direction_to_player() -> Vector2:
 	
 
 func _setup_player():
-	print("CharacterBody2D._setup_player()")
 	player = get_tree().get_first_node_in_group("player") as Node2D
 		
 

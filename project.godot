@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Main/Main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameEvents="*res://Scenes/autoloads/game_events.tscn"
+
 [debug]
 
 gdscript/warnings/unused_parameter=0
