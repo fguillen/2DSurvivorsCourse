@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
-const MAX_SPEED = 200
+const MAX_SPEED = 120
+const ACCELERATION = 15
 
 
 func _process(delta):
 	var direction = _get_direction()
-	velocity = direction * MAX_SPEED
+	var target_velocity = direction * MAX_SPEED
+	velocity = velocity.lerp(target_velocity, ACCELERATION * delta)
+#	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION)
 	move_and_slide()
 	
 

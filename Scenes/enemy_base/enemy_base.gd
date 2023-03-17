@@ -1,7 +1,7 @@
 class_name EnemyBase
 extends CharacterBody2D
 
-const MAX_SPEED = 75
+const MAX_SPEED = 40
 var player:Node2D
 
 func _ready():
