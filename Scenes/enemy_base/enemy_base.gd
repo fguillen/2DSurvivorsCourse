@@ -9,6 +9,9 @@ func _ready():
 	
 	
 func _process(delta):
+	if not player:
+		_setup_player()
+		
 	if player:
 		_move_towards_player()
 	
