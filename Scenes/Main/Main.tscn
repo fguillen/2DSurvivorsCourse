@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://0wwkm63g6q5x"]
 
-[ext_resource type="PackedScene" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
+[ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
 [ext_resource type="TileSet" uid="uid://fuipmlw8iyc1" path="res://environment/ground.tres" id="1_nile1"]
 [ext_resource type="PackedScene" uid="uid://c1uwkff5dc5lc" path="res://Scenes/managers/arena_time_manager.tscn" id="1_poucw"]

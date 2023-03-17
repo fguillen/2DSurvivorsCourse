@@ -8,7 +8,7 @@ func _ready():
 	get_tree().get_root().connect("ready", _setup_player)
 	
 	
-func _process(delta):
+func _physics_process(delta):
 	if not player:
 		_setup_player()
 		

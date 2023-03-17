@@ -4,7 +4,7 @@ const MAX_SPEED = 120
 const ACCELERATION = 15
 
 
-func _process(delta):
+func _physics_process(delta):
 	var direction = _get_direction()
 	var target_velocity = direction * MAX_SPEED
 	velocity = velocity.lerp(target_velocity, ACCELERATION * delta)
