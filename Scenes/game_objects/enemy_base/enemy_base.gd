@@ -1,7 +1,6 @@
 class_name EnemyBase
 extends CharacterBody2D
 
-signal hitted(value)
 signal died(position)
 
 
@@ -43,6 +42,4 @@ func _move_towards_player():
 	velocity = direction * MAX_SPEED
 	move_and_slide()
 
-	
-func _on_hit_area_area_entered(area):
-	emit_signal("hitted", 10)
+

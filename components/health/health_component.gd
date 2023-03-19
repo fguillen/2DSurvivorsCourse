@@ -16,6 +16,3 @@ func damage(value:int):
 	if health == 0:
 		emit_signal("out_of_health")
 
-
-func _on_owner_hitted(value:int):
-	damage(value)

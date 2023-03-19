@@ -21,7 +21,8 @@ func attack():
 	var sword := sword_ability.instantiate() as Node2D
 	get_tree().get_root().add_child(sword)
 	
-	# Position and rotation
+	# Sword Setup
+	sword.damage = 5
 	sword.global_position = closest_enemy.global_position
 	sword.global_position += Vector2.RIGHT.rotated(randf_range(0.0, TAU)) * 4 # Position offset
 	
