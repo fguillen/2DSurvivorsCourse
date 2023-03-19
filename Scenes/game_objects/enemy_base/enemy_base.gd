@@ -1,8 +1,12 @@
 class_name EnemyBase
 extends CharacterBody2D
 
+signal hitted(value)
+
 const MAX_SPEED = 40
+
 var player:Node2D
+
 
 func _ready():
 	get_tree().get_root().connect("ready", _setup_player)
@@ -31,8 +35,7 @@ func _move_towards_player():
 	var direction = _get_direction_to_player()
 	velocity = direction * MAX_SPEED
 	move_and_slide()
+
 	
-
-
 func _on_hit_area_area_entered(area):
-	queue_free()
+	emit_signal("hitted", 10)

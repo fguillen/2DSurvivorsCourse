@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbl6s12o1f85v"]
+[gd_scene load_steps=6 format=3 uid="uid://be0moexyb2s5l"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/enemy_base/enemy_base.gd" id="1_6rqo2"]
 [ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="1_iil1o"]
+[ext_resource type="PackedScene" uid="uid://n3uc4l5l247q" path="res://components/health/health_component.tscn" id="2_wklpk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lntu1"]
 
@@ -13,6 +14,8 @@ collision_layer = 4
 collision_mask = 13
 motion_mode = 1
 script = ExtResource("1_6rqo2")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_wklpk")]
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_layer = 16
