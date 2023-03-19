@@ -16,10 +16,14 @@ extends Node
 # remaining built-in virtual methods
 # public methods
 func drop(position:Vector2):
+	Callable(_drop_deferred).call_deferred(position)
+	
+
+# private methods
+func _drop_deferred(position:Vector2):
 	var vial_instance = vial_scene.instantiate() as Node2D
 	owner.get_parent().add_child(vial_instance)
 	vial_instance.global_position = position
 
-# private methods
 # subclasses
 
