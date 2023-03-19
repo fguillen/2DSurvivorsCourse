@@ -5,6 +5,7 @@ extends Node
 # enums
 # constants
 # exported variables
+@export_range(0, 1) var drop_chance := 0.5
 @export var vial_scene: PackedScene
 
 # public variables
@@ -16,6 +17,9 @@ extends Node
 # remaining built-in virtual methods
 # public methods
 func drop(position:Vector2):
+	if randf() > drop_chance:
+		return
+		
 	Callable(_drop_deferred).call_deferred(position)
 	
 
