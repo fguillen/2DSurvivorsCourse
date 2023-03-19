@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://be0moexyb2s5l"]
+[gd_scene load_steps=7 format=3 uid="uid://be0moexyb2s5l"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/enemy_base/enemy_base.gd" id="1_6rqo2"]
 [ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="1_iil1o"]
 [ext_resource type="PackedScene" uid="uid://n3uc4l5l247q" path="res://components/health/health_component.tscn" id="2_wklpk"]
+[ext_resource type="PackedScene" uid="uid://d3clxykedkkqq" path="res://components/vial_dropper/vial_dropper_component.tscn" id="3_4hunm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lntu1"]
 
@@ -16,6 +17,8 @@ motion_mode = 1
 script = ExtResource("1_6rqo2")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_wklpk")]
+
+[node name="VialDropperComponent" parent="." instance=ExtResource("3_4hunm")]
 
 [node name="DamageArea" type="Area2D" parent="."]
 collision_layer = 16
@@ -33,4 +36,7 @@ texture = ExtResource("1_iil1o")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_bqa7d")
 
+[connection signal="died" from="." to="VialDropperComponent" method="drop"]
+[connection signal="hitted" from="." to="HealthComponent" method="damage"]
+[connection signal="out_of_health" from="HealthComponent" to="." method="die"]
 [connection signal="area_entered" from="DamageArea" to="." method="_on_hit_area_area_entered"]

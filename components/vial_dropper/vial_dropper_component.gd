@@ -1,16 +1,12 @@
-# meta-name: Code style template
-# meta-description: Empty script with all the organization of the components
+class_name VialDropperComponent
+extends Node
 
-extends _BASE_
-
-# @tool
-# class_name
-# extends
-# docstring
 # signals
 # enums
 # constants
 # exported variables
+@export var vial_scene: PackedScene
+
 # public variables
 # private variables
 # onready variables
@@ -19,5 +15,11 @@ extends _BASE_
 # built-in virtual _ready method
 # remaining built-in virtual methods
 # public methods
+func drop(position:Vector2):
+	var vial_instance = vial_scene.instantiate() as Node2D
+	owner.get_parent().add_child(vial_instance)
+	vial_instance.global_position = position
+
 # private methods
 # subclasses
+

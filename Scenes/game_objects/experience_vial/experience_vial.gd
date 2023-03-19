@@ -1,3 +1,4 @@
+class_name ExperienceVial
 extends Node2D
 
 

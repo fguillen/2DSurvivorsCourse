@@ -2,6 +2,8 @@ class_name EnemyBase
 extends CharacterBody2D
 
 signal hitted(value)
+signal died(position)
+
 
 const MAX_SPEED = 40
 
@@ -12,6 +14,11 @@ func _ready():
 	get_tree().get_root().connect("ready", _setup_player)
 	
 	
+func die():
+	emit_signal("died", global_position)
+	queue_free()	
+
+
 func _physics_process(delta):
 	if not player:
 		_setup_player()
