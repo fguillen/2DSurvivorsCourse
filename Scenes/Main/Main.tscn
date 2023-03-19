@@ -1,23 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://0wwkm63g6q5x"]
+[gd_scene load_steps=11 format=3 uid="uid://dld3vs3g5tpgq"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
 [ext_resource type="TileSet" uid="uid://fuipmlw8iyc1" path="res://environment/ground.tres" id="1_nile1"]
 [ext_resource type="PackedScene" uid="uid://c1uwkff5dc5lc" path="res://Scenes/managers/arena_time_manager.tscn" id="1_poucw"]
 [ext_resource type="PackedScene" uid="uid://dn5584g8cxcat" path="res://Scenes/managers/experience_manager.tscn" id="1_y76ip"]
-[ext_resource type="PackedScene" uid="uid://cac5aopegpp78" path="res://Scenes/arena_ui/arena_ui.tscn" id="2_pmhgu"]
+[ext_resource type="PackedScene" uid="uid://mpnlil4k7l0q" path="res://Scenes/ui/arena_ui.tscn" id="2_pmhgu"]
+[ext_resource type="PackedScene" uid="uid://1rc432x80f2i" path="res://Scenes/ui/experience_bar.tscn" id="2_rt856"]
 [ext_resource type="PackedScene" uid="uid://c41w1sn5oo1bw" path="res://environment/game_camera.tscn" id="3_g0q8l"]
 [ext_resource type="PackedScene" uid="uid://be0moexyb2s5l" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="4_o3xjv"]
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="8_e4v2x"]
 
 [node name="Main" type="Node"]
 
+[node name="ArenaUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_pmhgu")]
+arena_time_manager = NodePath("../ArenaTimeManager")
+
+[node name="ExperienceBar" parent="." instance=ExtResource("2_rt856")]
+
 [node name="ExperienceManager" parent="." instance=ExtResource("1_y76ip")]
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("1_poucw")]
-
-[node name="ArenaUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("2_pmhgu")]
-arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_23xqv")]
 enemy_scene = ExtResource("4_o3xjv")
@@ -70,3 +73,5 @@ position = Vector2(471, 272)
 
 [node name="ExperienceVial11" parent="." instance=ExtResource("8_e4v2x")]
 position = Vector2(471, 272)
+
+[connection signal="experience_updated" from="ExperienceManager" to="ExperienceBar" method="on_value_changed"]

@@ -12,6 +12,6 @@ func _process(delta):
 
 func _format_seconds_to_string(value: int) -> String:
 	var seconds = value%60
-	var minutes = (value/60)%60
+	var minutes = int((value/60.0))%60
 
 	return "%02d:%02d" % [minutes, seconds]

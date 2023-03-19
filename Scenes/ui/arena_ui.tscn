@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cac5aopegpp78"]
+[gd_scene load_steps=2 format=3 uid="uid://mpnlil4k7l0q"]
 
-[ext_resource type="Script" path="res://Scenes/arena_ui/arena_ui.gd" id="1_53ga5"]
+[ext_resource type="Script" path="res://Scenes/ui/arena_ui.gd" id="1_53ga5"]
 
 [node name="ArenaUI" type="CanvasLayer"]
 script = ExtResource("1_53ga5")
