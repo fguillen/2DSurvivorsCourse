@@ -5,7 +5,7 @@
 
 [node name="SwordAbilityController" type="Node2D"]
 script = ExtResource("1_d3ts5")
-sword_ability = ExtResource("2_i0415")
+sword_ability_scene = ExtResource("2_i0415")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

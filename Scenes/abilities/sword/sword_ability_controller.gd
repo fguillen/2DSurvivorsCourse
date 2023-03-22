@@ -2,13 +2,17 @@ extends Node2D
 
 const MAX_RANGE = 150
 
-@export var sword_ability: PackedScene
+@export var sword_ability_scene: PackedScene
 
 @onready var _timer := $Timer
 
+var _initial_wait_time:float
+
 
 func _ready():
+	_initial_wait_time = _timer.wait_time
 	_timer.timeout.connect(_on_timer_timeout)
+	GameEvents.ability_upgrade_added.connect(_on_ability_upgrade_added)
 	
 	
 func attack():
@@ -18,7 +22,7 @@ func attack():
 		return
 	
 	# Instantiate sword
-	var sword := sword_ability.instantiate() as Node2D
+	var sword := sword_ability_scene.instantiate() as Node2D
 	get_tree().get_root().add_child(sword)
 	
 	# Sword Setup
@@ -32,6 +36,15 @@ func attack():
 	
 func _on_timer_timeout():
 	attack()
+	
+	
+func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade):
+	if not ability_upgrade.id == "sword_rate":
+		return
+		
+	_timer.wait_time = _timer.wait_time * (1.0 - 0.1)
+	
+	print("SwordAbilityController.timer.wait_time: ", _timer.wait_time)
 	
 	
 func _get_closest_enemy() -> EnemyBase:

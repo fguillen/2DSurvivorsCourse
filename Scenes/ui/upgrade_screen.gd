@@ -38,6 +38,8 @@ func set_ability_upgrades(ability_upgrades:Array[AbilityUpgrade]):
 # private methods
 func _on_ability_upgrade_selected(ability_upgrade: AbilityUpgrade):
 	emit_signal("ability_upgrade_selected", ability_upgrade)
+	get_tree().paused = false
+	queue_free()
 	
 		
 # subclasses

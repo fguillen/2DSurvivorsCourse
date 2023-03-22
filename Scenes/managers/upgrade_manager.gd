@@ -25,11 +25,11 @@ func show_upgrade_screen(current_level:int):
 	var upgrade_screen:UpgradeScreen = upgrade_screen_scene.instantiate()
 	add_child(upgrade_screen)
 	upgrade_screen.set_ability_upgrades([ability_upgrade])
-	upgrade_screen.connect("ability_upgrade_selected", _add_ability_upgrade)
+	upgrade_screen.connect("ability_upgrade_selected", _apply_ability_upgrade)
 	
 
 # private methods
-func _add_ability_upgrade(ability_upgrade:AbilityUpgrade):
+func _apply_ability_upgrade(ability_upgrade:AbilityUpgrade):
 	if not current_upgrades.has(ability_upgrade["id"]):
 		current_upgrades[ability_upgrade["id"]] = {
 			"resource": ability_upgrade,
@@ -38,7 +38,7 @@ func _add_ability_upgrade(ability_upgrade:AbilityUpgrade):
 	else:
 		current_upgrades[ability_upgrade["id"]]["quantity"] += 1
 		
-	print("UpgradeManager.current_upgrades: ", current_upgrades)
+	GameEvents.emit_ability_upgrade_added(ability_upgrade)
 	
 	
 # subclasses

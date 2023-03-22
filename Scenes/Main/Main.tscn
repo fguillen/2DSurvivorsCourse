@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c41w1sn5oo1bw" path="res://environment/game_camera.tscn" id="3_g0q8l"]
 [ext_resource type="PackedScene" uid="uid://be0moexyb2s5l" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="4_o3xjv"]
 [ext_resource type="PackedScene" uid="uid://bx314cead33f2" path="res://Scenes/managers/upgrade_manager.tscn" id="5_imy0s"]
-[ext_resource type="PackedScene" uid="uid://ue1knbii4n2b" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
+[ext_resource type="PackedScene" uid="uid://brq02nvice0wv" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="8_e4v2x"]
 
 [node name="Main" type="Node"]
@@ -78,6 +78,10 @@ position = Vector2(471, 272)
 
 [node name="ExperienceVial11" parent="." instance=ExtResource("8_e4v2x")]
 position = Vector2(471, 272)
+
+[node name="EntitiesLayer" type="Node2D" parent="." groups=["entities_layer"]]
+
+[node name="ForegroundLayer" type="Node2D" parent="." groups=["foreground_layer"]]
 
 [connection signal="experience_updated" from="ExperienceManager" to="ExperienceBar" method="on_value_changed"]
 [connection signal="level_increased" from="ExperienceManager" to="UpgradeManager" method="show_upgrade_screen"]
