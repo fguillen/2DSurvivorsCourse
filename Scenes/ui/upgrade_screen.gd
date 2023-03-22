@@ -19,6 +19,10 @@ extends CanvasLayer
 # optional built-in virtual _init method
 # optional built-in virtual _enter_tree() method
 # built-in virtual _ready method
+func _ready():
+	get_tree().paused = true
+	
+	
 # remaining built-in virtual methods
 # public methods
 func set_ability_upgrades(ability_upgrades:Array[AbilityUpgrade]):
