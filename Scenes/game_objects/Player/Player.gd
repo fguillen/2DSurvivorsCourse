@@ -4,6 +4,7 @@ extends CharacterBody2D
 const MAX_SPEED = 120
 const ACCELERATION = 15
 
+signal has_died()
 
 func _physics_process(delta):
 	var direction = _get_direction()
@@ -14,6 +15,7 @@ func _physics_process(delta):
 
 
 func die():
+	emit_signal("has_died")
 	queue_free()
 	
 
