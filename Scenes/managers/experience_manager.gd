@@ -1,6 +1,7 @@
 extends Node
 
 signal experience_updated(current:int, target:int)
+signal level_increased(current_level:int)
 
 const TARGET_GROWTH := 5
 
@@ -16,9 +17,14 @@ func _ready():
 func increase_experience(value: int):
 	self.experience = min(experience + value, target)
 	if experience == target:
-		target += TARGET_GROWTH
-		level += 1
-		experience = 0
+		increase_level()
+	
+	
+func increase_level():
+	level += 1
+	target += TARGET_GROWTH
+	experience = 0
+	emit_signal("level_increased", level)
 	
 	
 func _on_experiece_vial_collected(value: int):
