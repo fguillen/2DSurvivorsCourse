@@ -5,6 +5,8 @@ signal died(position)
 
 
 const MAX_SPEED = 40
+
+@export var damage := 1
 	
 	
 func die():

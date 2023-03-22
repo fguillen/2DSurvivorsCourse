@@ -1,21 +1,51 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwpp4bl441cr3"]
+[gd_scene load_steps=10 format=3 uid="uid://dwpp4bl441cr3"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/Player/Player.gd" id="1_5qcf4"]
 [ext_resource type="Texture2D" uid="uid://c4cj3derl7n8c" path="res://Scenes/game_objects/Player/Player_Sprite.png" id="1_xn35m"]
+[ext_resource type="PackedScene" uid="uid://n3uc4l5l247q" path="res://components/health/health_component.tscn" id="2_q5sy5"]
+[ext_resource type="PackedScene" uid="uid://bdtkwrkk21474" path="res://components/hurtbox_component.tscn" id="3_mr0p3"]
 [ext_resource type="PackedScene" uid="uid://07vxyye27dnq" path="res://Scenes/abilities/sword/sword_ability_controller.tscn" id="3_xvco3"]
+[ext_resource type="PackedScene" uid="uid://bgb5spu3gxpml" path="res://components/health_bar_component.tscn" id="4_jlx6i"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hn5t8"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8altu"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_usfi4"]
 radius = 25.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hn5t8"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 0
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_5qcf4")
 
+[node name="HealthComponent" parent="." instance=ExtResource("2_q5sy5")]
+debug = true
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("3_mr0p3")]
+position = Vector2(0, -7)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_8altu")
+
+[node name="HealthBarComponent" parent="." instance=ExtResource("4_jlx6i")]
+offset_left = -12.0
+offset_top = -22.0
+offset_right = 12.0
+offset_bottom = -16.0
+
 [node name="SwordAbilityController" parent="." instance=ExtResource("3_xvco3")]
+
+[node name="PickableArea2D" type="Area2D" parent="SwordAbilityController"]
+collision_layer = 128
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordAbilityController/PickableArea2D"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_usfi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
@@ -25,10 +55,6 @@ texture = ExtResource("1_xn35m")
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_hn5t8")
 
-[node name="PickableArea2D" type="Area2D" parent="."]
-collision_layer = 128
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickableArea2D"]
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_usfi4")
+[connection signal="health_changed" from="HealthComponent" to="HealthBarComponent" method="set_health"]
+[connection signal="out_of_health" from="HealthComponent" to="." method="die"]
+[connection signal="got_hurt" from="HurtboxComponent" to="HealthComponent" method="damage"]

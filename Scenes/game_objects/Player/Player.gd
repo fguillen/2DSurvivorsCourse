@@ -11,6 +11,10 @@ func _physics_process(delta):
 	velocity = velocity.lerp(target_velocity, ACCELERATION * delta)
 #	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION)
 	move_and_slide()
+
+
+func die():
+	queue_free()
 	
 
 func _get_direction() -> Vector2:

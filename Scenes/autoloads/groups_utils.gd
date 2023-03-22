@@ -38,7 +38,7 @@ func _get_foreground_layer() -> Node2D:
 	
 	
 func _get_first_node_in_group(group_name: String) -> Node:
-	if _cache.has(group_name):
+	if _cache.has(group_name) and is_instance_valid(_cache[group_name]):
 		return _cache[group_name]
 		
 	var node = get_tree().get_first_node_in_group(group_name) as Node
