@@ -26,7 +26,7 @@ func drop(position:Vector2):
 # private methods
 func _drop_deferred(position:Vector2):
 	var vial_instance = vial_scene.instantiate() as Node2D
-	owner.get_parent().add_child(vial_instance)
+	GroupsUtils.entities_layer.add_child(vial_instance)
 	vial_instance.global_position = position
 
 # subclasses

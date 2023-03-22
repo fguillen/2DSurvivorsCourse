@@ -23,7 +23,7 @@ func attack():
 	
 	# Instantiate sword
 	var sword := sword_ability_scene.instantiate() as Node2D
-	get_tree().get_root().add_child(sword)
+	GroupsUtils.foreground_layer.add_child(sword)
 	
 	# Sword Setup
 	sword.damage = 5
