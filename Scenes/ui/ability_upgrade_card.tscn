@@ -21,3 +21,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Test long description of the property"
 autowrap_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

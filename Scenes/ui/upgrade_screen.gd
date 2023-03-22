@@ -6,6 +6,8 @@ extends CanvasLayer
 # extends
 # docstring
 # signals
+signal ability_upgrade_selected(ability_upgrade: AbilityUpgrade)
+
 # enums
 # constants
 # exported variables
@@ -29,8 +31,14 @@ func set_ability_upgrades(ability_upgrades:Array[AbilityUpgrade]):
 	for ability_upgrade in ability_upgrades:
 		var ability_upgrade_card:AbilityUpgradeCard = ability_upgrade_card_scene.instantiate()
 		ability_upgrade_cards_container.add_child(ability_upgrade_card)
-		ability_upgrade_card.set_ability_upgrade(ability_upgrade)
+		ability_upgrade_card.ability_upgrade = ability_upgrade
+		ability_upgrade_card.ability_upgrade_selected.connect(_on_ability_upgrade_selected)
+
 
 # private methods
+func _on_ability_upgrade_selected(ability_upgrade: AbilityUpgrade):
+	emit_signal("ability_upgrade_selected", ability_upgrade)
+	
+		
 # subclasses
 
