@@ -4,6 +4,20 @@ const SPAWN_RADIOUS = 320
 
 @export var enemy_scene: PackedScene
 
+@onready var _timer: Timer = $Timer
+
+var _default_interval: float
+var _min_interval := 0.1
+var _max_difficulty := 10
+
+func _ready():
+	_default_interval = _timer.wait_time
+
+
+func set_difficulty_level(difficulty_level: int):
+	_timer.wait_time = lerp(_default_interval, _min_interval, difficulty_level / float(_max_difficulty))
+	print("EnemySpawner.wait_time: ", _timer.wait_time)
+
 
 func spawn():
 	if not GroupsUtils.player:
