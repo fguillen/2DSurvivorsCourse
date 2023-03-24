@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityAcquisition" load_steps=3 format=3 uid="uid://dmi6q2gt5sww7"]
+
+[ext_resource type="PackedScene" uid="uid://dedni8ramk84d" path="res://Scenes/abilities/axe/axe_ability_controller.tscn" id="1_0rh8b"]
+[ext_resource type="Script" path="res://resources/upgrades/ability_acquisition.gd" id="1_13cpr"]
+
+[resource]
+script = ExtResource("1_13cpr")
+ability_scene = ExtResource("1_0rh8b")
+id = "axe_acquisition"
+name = "Axe"
+description = "An axe is spinning around you and killing enemies"

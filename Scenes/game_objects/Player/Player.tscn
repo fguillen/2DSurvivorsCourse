@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtkwrkk21474" path="res://components/hurtbox_component.tscn" id="3_mr0p3"]
 [ext_resource type="PackedScene" uid="uid://07vxyye27dnq" path="res://Scenes/abilities/sword/sword_ability_controller.tscn" id="3_xvco3"]
 [ext_resource type="PackedScene" uid="uid://bgb5spu3gxpml" path="res://components/health_bar_component.tscn" id="4_jlx6i"]
-[ext_resource type="PackedScene" uid="uid://dedni8ramk84d" path="res://Scenes/abilities/axe/axe_ability_controller.tscn" id="6_o0kef"]
+[ext_resource type="PackedScene" uid="uid://bx71dq73xnr7y" path="res://components/abilities_inventory_component.tscn" id="5_tw51v"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8altu"]
 radius = 7.0
@@ -38,9 +38,9 @@ offset_top = -22.0
 offset_right = 12.0
 offset_bottom = -16.0
 
-[node name="SwordAbilityController" parent="." instance=ExtResource("3_xvco3")]
+[node name="AbilitiesInventoryComponent" parent="." instance=ExtResource("5_tw51v")]
 
-[node name="AxeAbilityController" parent="." instance=ExtResource("6_o0kef")]
+[node name="SwordAbilityController" parent="AbilitiesInventoryComponent" instance=ExtResource("3_xvco3")]
 
 [node name="PickableArea2D" type="Area2D" parent="."]
 collision_layer = 128

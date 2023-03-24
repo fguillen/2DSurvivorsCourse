@@ -3,10 +3,10 @@ extends Node
 signal experience_updated(current:int, target:int)
 signal level_increased(current_level:int)
 
-const TARGET_GROWTH := 5
+@export var target := 5
+@export var target_growth := 5
 
 var level := 1
-var target := 5
 var experience := 0 : set = _set_experience
 
 
@@ -22,7 +22,7 @@ func increase_experience(value: int):
 	
 func increase_level():
 	level += 1
-	target += TARGET_GROWTH
+	target += target_growth
 	experience = 0
 	emit_signal("level_increased", level)
 	

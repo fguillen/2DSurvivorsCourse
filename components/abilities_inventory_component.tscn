@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx71dq73xnr7y"]
+
+[ext_resource type="Script" path="res://components/abilities_inventory_component.gd" id="1_anxcu"]
+
+[node name="AbilitiesInventoryComponent" type="Node2D"]
+script = ExtResource("1_anxcu")

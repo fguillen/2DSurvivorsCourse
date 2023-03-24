@@ -27,7 +27,7 @@ func _ready():
 	
 # remaining built-in virtual methods
 # public methods
-func set_ability_upgrades(ability_upgrades:Array[AbilityUpgrade]):
+func set_ability_upgrades(ability_upgrades: Array[AbilityUpgrade]):
 	for ability_upgrade in ability_upgrades:
 		var ability_upgrade_card:AbilityUpgradeCard = ability_upgrade_card_scene.instantiate()
 		ability_upgrade_cards_container.add_child(ability_upgrade_card)
