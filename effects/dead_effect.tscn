@@ -1,21 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch3qeiny8g70h"]
+[gd_scene load_steps=4 format=3 uid="uid://c5rawmjuk1x0"]
 
-[ext_resource type="Script" path="res://components/dead_feedback.gd" id="1_7rhww"]
-[ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="2_4glqg"]
+[ext_resource type="Script" path="res://effects/dead_effect.gd" id="1_lgc3t"]
+[ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="2_5qtf6"]
 
 [sub_resource type="Curve" id="Curve_r0gl7"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.677374, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[node name="DeadFeedback" type="Node2D"]
-script = ExtResource("1_7rhww")
+[node name="DeadEffect" type="Node2D"]
+script = ExtResource("1_lgc3t")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 1
 lifetime = 0.5
 one_shot = true
-texture = ExtResource("2_4glqg")
+texture = ExtResource("2_5qtf6")
 direction = Vector2(0, -1)
 spread = 10.0
 initial_velocity_min = 220.0

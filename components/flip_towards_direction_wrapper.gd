@@ -19,6 +19,11 @@ extends Node2D
 # 12. optional built-in virtual _init method
 # 13. optional built-in virtual _enter_tree() method
 # 14. built-in virtual _ready method
+func _ready():
+	if direction_object == null:
+		direction_object = owner
+	
+	
 # 15. remaining built-in virtual methods
 func _process(delta):
 	flip_towards(direction_object.direction)

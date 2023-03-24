@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://be0moexyb2s5l"]
+[gd_scene load_steps=13 format=3 uid="uid://d4h5p3n1nj8r"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/enemy_base/enemy_base.gd" id="1_6rqo2"]
 [ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="1_iil1o"]
@@ -6,12 +6,39 @@
 [ext_resource type="PackedScene" uid="uid://d3clxykedkkqq" path="res://components/vial_dropper/vial_dropper_component.tscn" id="3_4hunm"]
 [ext_resource type="PackedScene" uid="uid://bdtkwrkk21474" path="res://components/hurtbox_component.tscn" id="4_pysmj"]
 [ext_resource type="PackedScene" uid="uid://7kd5yunag40" path="res://components/flip_towards_direction_wrapper.tscn" id="5_sn8g8"]
-[ext_resource type="PackedScene" uid="uid://dmv4gjtm7mg6w" path="res://dead_feedback.tscn" id="7_dp8xu"]
+[ext_resource type="PackedScene" uid="uid://boxt5bjh00uhc" path="res://components/dead_effect.tscn" id="7_dp8xu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lm0i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bqa7d"]
 radius = 5.0
+
+[sub_resource type="Animation" id="Animation_6s8f2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_4hha6"]
 resource_name = "walk"
@@ -40,33 +67,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.139626, 0.139626, -0.139626]
-}
-
-[sub_resource type="Animation" id="Animation_6s8f2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tqsu2"]
@@ -108,15 +108,12 @@ libraries = {
 "": SubResource("AnimationLibrary_tqsu2")
 }
 
-[node name="Feedback" type="Node2D" parent="."]
+[node name="Effects" type="Node2D" parent="."]
 
-[node name="FlipTowardsDirectionWrapper" parent="Feedback" node_paths=PackedStringArray("direction_object") instance=ExtResource("5_sn8g8")]
-direction_object = NodePath("../..")
-
-[node name="DeadFeedback" parent="Feedback/FlipTowardsDirectionWrapper" instance=ExtResource("7_dp8xu")]
+[node name="DeadEffect" parent="Effects" instance=ExtResource("7_dp8xu")]
 texture = ExtResource("1_iil1o")
 
 [connection signal="died" from="." to="VialDropperComponent" method="drop"]
-[connection signal="died" from="." to="Feedback/FlipTowardsDirectionWrapper/DeadFeedback" method="perform"]
+[connection signal="died" from="." to="Effects/DeadEffect" method="perform"]
 [connection signal="out_of_health" from="HealthComponent" to="." method="die"]
 [connection signal="got_hurt" from="HurtboxComponent" to="HealthComponent" method="damage"]
