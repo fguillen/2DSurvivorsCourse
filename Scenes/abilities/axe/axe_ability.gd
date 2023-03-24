@@ -15,7 +15,7 @@ extends Node2D
 @export var max_radius := 100
 
 # 09. public variables
-var damage:int = 0
+var damage: int = 0
 
 # 10. private variables
 var _rotation := 0.0

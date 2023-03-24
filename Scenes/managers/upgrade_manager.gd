@@ -20,8 +20,10 @@ var current_upgrades = {}
 # remaining built-in virtual methods
 # public methods
 func show_upgrade_screen(current_level:int):
-	if upgrade_pool.size() == 0:
-		push_warning("UpgradeManager.upgrade_pool.size() == 0")
+	# Picking ability upgrades
+	var ability_upgrades_chosen = _pick_random_upgrades()
+	if ability_upgrades_chosen.size() == 0:
+		push_warning("UpgradeManager not available ability upgrades")
 		return
 		
 	# setup UpgradeScreen
@@ -30,13 +32,22 @@ func show_upgrade_screen(current_level:int):
 	upgrade_screen.connect("ability_upgrade_selected", _apply_ability_upgrade)
 	
 	# setup upgrades
-	var ability_upgrades_chosen = _pick_random_upgrades()
 	upgrade_screen.set_ability_upgrades(ability_upgrades_chosen)
 	
 
 # private methods
+func _filter_upgrade_pool_available() -> Array[AbilityUpgrade]:
+	return upgrade_pool.filter(
+			func(ability_upgrade):
+				if not current_upgrades.has(ability_upgrade["id"]):
+					return true
+				else:
+					return current_upgrades[ability_upgrade["id"]]["quantity"] < ability_upgrade.max_quantity
+	)		
+	
+	
 func _pick_random_upgrades(quantity: int = 2) -> Array[AbilityUpgrade]:
-	var ability_upgrades_chosen = upgrade_pool.duplicate()
+	var ability_upgrades_chosen = _filter_upgrade_pool_available()
 	ability_upgrades_chosen.shuffle()
 	ability_upgrades_chosen = ability_upgrades_chosen.slice(0, quantity)
 		
