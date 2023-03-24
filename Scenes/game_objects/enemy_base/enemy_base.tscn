@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://be0moexyb2s5l"]
+[gd_scene load_steps=13 format=3 uid="uid://be0moexyb2s5l"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/enemy_base/enemy_base.gd" id="1_6rqo2"]
 [ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="1_iil1o"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3clxykedkkqq" path="res://components/vial_dropper/vial_dropper_component.tscn" id="3_4hunm"]
 [ext_resource type="PackedScene" uid="uid://bdtkwrkk21474" path="res://components/hurtbox_component.tscn" id="4_pysmj"]
 [ext_resource type="PackedScene" uid="uid://7kd5yunag40" path="res://components/flip_towards_direction_wrapper.tscn" id="5_sn8g8"]
+[ext_resource type="PackedScene" uid="uid://dmv4gjtm7mg6w" path="res://dead_feedback.tscn" id="7_dp8xu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lm0i"]
 
@@ -107,6 +108,15 @@ libraries = {
 "": SubResource("AnimationLibrary_tqsu2")
 }
 
+[node name="Feedback" type="Node2D" parent="."]
+
+[node name="FlipTowardsDirectionWrapper" parent="Feedback" node_paths=PackedStringArray("direction_object") instance=ExtResource("5_sn8g8")]
+direction_object = NodePath("../..")
+
+[node name="DeadFeedback" parent="Feedback/FlipTowardsDirectionWrapper" instance=ExtResource("7_dp8xu")]
+texture = ExtResource("1_iil1o")
+
 [connection signal="died" from="." to="VialDropperComponent" method="drop"]
+[connection signal="died" from="." to="Feedback/FlipTowardsDirectionWrapper/DeadFeedback" method="perform"]
 [connection signal="out_of_health" from="HealthComponent" to="." method="die"]
 [connection signal="got_hurt" from="HurtboxComponent" to="HealthComponent" method="damage"]

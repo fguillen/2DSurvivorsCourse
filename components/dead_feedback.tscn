@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch3qeiny8g70h"]
+
+[ext_resource type="Script" path="res://components/dead_feedback.gd" id="1_7rhww"]
+[ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="2_4glqg"]
+
+[sub_resource type="Curve" id="Curve_r0gl7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.677374, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="DeadFeedback" type="Node2D"]
+script = ExtResource("1_7rhww")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 0.5
+one_shot = true
+texture = ExtResource("2_4glqg")
+direction = Vector2(0, -1)
+spread = 10.0
+initial_velocity_min = 220.0
+initial_velocity_max = 250.0
+angular_velocity_min = 200.0
+angular_velocity_max = 300.0
+scale_amount_curve = SubResource("Curve_r0gl7")
+
+[node name="FreeTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="FreeTimer" to="." method="_on_free_timer_timeout"]
