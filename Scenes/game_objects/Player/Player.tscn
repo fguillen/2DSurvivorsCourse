@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dwpp4bl441cr3"]
+[gd_scene load_steps=15 format=3 uid="uid://dwpp4bl441cr3"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/Player/Player.gd" id="1_5qcf4"]
 [ext_resource type="Texture2D" uid="uid://c4cj3derl7n8c" path="res://Scenes/game_objects/Player/Player_Sprite.png" id="1_xn35m"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://07vxyye27dnq" path="res://Scenes/abilities/sword/sword_ability_controller.tscn" id="3_xvco3"]
 [ext_resource type="PackedScene" uid="uid://bgb5spu3gxpml" path="res://components/health_bar_component.tscn" id="4_jlx6i"]
 [ext_resource type="PackedScene" uid="uid://bx71dq73xnr7y" path="res://components/abilities_inventory_component.tscn" id="5_tw51v"]
+[ext_resource type="PackedScene" uid="uid://7kd5yunag40" path="res://components/flip_towards_direction_wrapper.tscn" id="7_8qhfd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8altu"]
 radius = 7.0
@@ -16,6 +17,69 @@ radius = 25.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hn5t8"]
 radius = 5.0
+
+[sub_resource type="Animation" id="Animation_rhsgt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_adw8o"]
+resource_name = "walk"
+length = 0.3
+loop_mode = 1
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.025, 0.0676373, 0.1, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -8), Vector2(0, -10.1835), Vector2(0, -11), Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlipTowardsDirectionWrapper/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.261799, -0.261799, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uoohr"]
+_data = {
+"RESET": SubResource("Animation_rhsgt"),
+"walk": SubResource("Animation_adw8o")
+}
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -50,13 +114,21 @@ collision_mask = 64
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_usfi4")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_xn35m")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_hn5t8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uoohr")
+}
+
+[node name="FlipTowardsDirectionWrapper" parent="." node_paths=PackedStringArray("direction_object") instance=ExtResource("7_8qhfd")]
+direction_object = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="FlipTowardsDirectionWrapper"]
+position = Vector2(0, -8)
+texture = ExtResource("1_xn35m")
 
 [connection signal="health_changed" from="HealthComponent" to="HealthBarComponent" method="set_health"]
 [connection signal="out_of_health" from="HealthComponent" to="." method="die"]
