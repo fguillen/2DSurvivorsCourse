@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dwpp4bl441cr3"]
+[gd_scene load_steps=11 format=3 uid="uid://dwpp4bl441cr3"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/Player/Player.gd" id="1_5qcf4"]
 [ext_resource type="Texture2D" uid="uid://c4cj3derl7n8c" path="res://Scenes/game_objects/Player/Player_Sprite.png" id="1_xn35m"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdtkwrkk21474" path="res://components/hurtbox_component.tscn" id="3_mr0p3"]
 [ext_resource type="PackedScene" uid="uid://07vxyye27dnq" path="res://Scenes/abilities/sword/sword_ability_controller.tscn" id="3_xvco3"]
 [ext_resource type="PackedScene" uid="uid://bgb5spu3gxpml" path="res://components/health_bar_component.tscn" id="4_jlx6i"]
+[ext_resource type="PackedScene" uid="uid://dedni8ramk84d" path="res://Scenes/abilities/axe/axe_ability_controller.tscn" id="6_o0kef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8altu"]
 radius = 7.0
@@ -39,11 +40,13 @@ offset_bottom = -16.0
 
 [node name="SwordAbilityController" parent="." instance=ExtResource("3_xvco3")]
 
-[node name="PickableArea2D" type="Area2D" parent="SwordAbilityController"]
+[node name="AxeAbilityController" parent="." instance=ExtResource("6_o0kef")]
+
+[node name="PickableArea2D" type="Area2D" parent="."]
 collision_layer = 128
 collision_mask = 64
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SwordAbilityController/PickableArea2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickableArea2D"]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_usfi4")
 
