@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d3clxykedkkqq" path="res://components/vial_dropper/vial_dropper_component.tscn" id="3_4hunm"]
 [ext_resource type="PackedScene" uid="uid://bdtkwrkk21474" path="res://components/hurtbox_component.tscn" id="4_pysmj"]
 [ext_resource type="PackedScene" uid="uid://7kd5yunag40" path="res://components/flip_towards_direction_wrapper.tscn" id="5_sn8g8"]
-[ext_resource type="PackedScene" uid="uid://boxt5bjh00uhc" path="res://components/dead_effect.tscn" id="7_dp8xu"]
+[ext_resource type="PackedScene" path="res://effects/dead_effect.tscn" id="7_dp8xu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lm0i"]
 
@@ -80,10 +80,12 @@ collision_layer = 4
 collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_6rqo2")
+acceleration = 20.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_wklpk")]
 
 [node name="VialDropperComponent" parent="." instance=ExtResource("3_4hunm")]
+drop_chance = 0.25
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("4_pysmj")]
 

@@ -3,9 +3,8 @@ extends CharacterBody2D
 
 signal died(position)
 
-
-const MAX_SPEED = 40
-
+@export var max_speed := 40
+@export var acceleration := 10.0
 @export var damage := 1
 	
 var direction := Vector2.ZERO
@@ -16,9 +15,9 @@ func die():
 	queue_free()	
 
 
-func _physics_process(delta):		
+func _physics_process(delta: float):		
 	if GroupsUtils.player:
-		_move_towards_player()
+		_move_towards_player(delta)
 	
 	
 func _get_direction_to_player() -> Vector2:
@@ -28,9 +27,10 @@ func _get_direction_to_player() -> Vector2:
 		return Vector2.ZERO
 			
 
-func _move_towards_player():
+func _move_towards_player(delta: float):
 	direction = _get_direction_to_player()
-	velocity = direction * MAX_SPEED
+	var desired_velocity = direction * max_speed
+	velocity = velocity.lerp(desired_velocity, acceleration * delta)
 	move_and_slide()
 
 
