@@ -8,6 +8,8 @@ const MAX_SPEED = 40
 
 @export var damage := 1
 	
+var direction := Vector2.ZERO
+
 	
 func die():
 	emit_signal("died", global_position)
@@ -27,7 +29,7 @@ func _get_direction_to_player() -> Vector2:
 			
 
 func _move_towards_player():
-	var direction = _get_direction_to_player()
+	direction = _get_direction_to_player()
 	velocity = direction * MAX_SPEED
 	move_and_slide()
 
