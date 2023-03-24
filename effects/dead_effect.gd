@@ -21,18 +21,18 @@ extends Node2D
 # 14. built-in virtual _ready method
 # 15. remaining built-in virtual methods
 # 16. public methods
-func perform(position: Vector2):
-	_reparent(position)
+func perform(pos: Vector2):
+	_reparent(pos)
 	particles.texture = texture
 	particles.emitting = true
 	free_timer.start()
 	
 	
 # 17. private methods
-func _reparent(position: Vector2):
+func _reparent(pos: Vector2):
 	get_parent().remove_child(self)
 	GroupsUtils.foreground_layer.add_child(self)
-	global_position = position
+	global_position = pos
 	
 	
 # 18. signal listeners
