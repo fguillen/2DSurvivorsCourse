@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://brq02nvice0wv" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
 [ext_resource type="PackedScene" uid="uid://bsa22pwkbrx7b" path="res://Scenes/managers/end_screen_manager.tscn" id="7_o17gm"]
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
-[ext_resource type="Resource" uid="uid://dio473dd6uihu" path="res://resources/level_enemies_tables/game_enemy_table_easy.tres" id="10_sb8gf"]
+[ext_resource type="Resource" uid="uid://bbgs6tef26xa8" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
 
 [node name="Main" type="Node"]
 
@@ -35,7 +35,7 @@ upgrade_screen_scene = ExtResource("6_y2ku4")
 [node name="DifficultyManager" parent="." instance=ExtResource("8_3fpqk")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_23xqv")]
-levels_enemy_table = ExtResource("10_sb8gf")
+levels_enemy_table = ExtResource("10_vpnxf")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_g0q8l")]
 

@@ -8,6 +8,7 @@ signal died(position)
 @export var damage := 1
 	
 var direction := Vector2.ZERO
+var is_moving := true : set = set_is_moving
 
 	
 func die():
@@ -15,9 +16,17 @@ func die():
 	queue_free()	
 
 
+func set_is_moving(value: bool):
+	is_moving = value
+
+
 func _physics_process(delta: float):		
-	if GroupsUtils.player:
-		_move_towards_player(delta)
+	if GroupsUtils.player and is_moving:
+		_move_towards_player()
+	else:
+		_decelerate()
+		
+	_move(delta)
 	
 	
 func _get_direction_to_player() -> Vector2:
@@ -27,10 +36,16 @@ func _get_direction_to_player() -> Vector2:
 		return Vector2.ZERO
 			
 
-func _move_towards_player(delta: float):
+func _move_towards_player():
 	direction = _get_direction_to_player()
+	
+	
+func _decelerate():
+	direction = Vector2.ZERO
+
+
+func _move(delta: float):
 	var desired_velocity = direction * max_speed
 	velocity = velocity.lerp(desired_velocity, acceleration * delta)
 	move_and_slide()
-
 
