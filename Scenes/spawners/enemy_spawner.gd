@@ -2,7 +2,7 @@ extends Node2D
 
 const SPAWN_RADIOUS = 320
 
-@export var enemy_scene: PackedScene
+@export var levels_enemy_table: LevelsEnemyTable
 @export_flags_2d_physics var wall_layer_mask
 
 @onready var _timer: Timer = $Timer
@@ -10,14 +10,17 @@ const SPAWN_RADIOUS = 320
 var _default_interval: float
 var _min_interval := 0.1
 var _max_difficulty := 10
+var _actual_level := 1
+
 
 func _ready():
 	_default_interval = _timer.wait_time
 
 
 func set_difficulty_level(difficulty_level: int):
-	_timer.wait_time = lerp(_default_interval, _min_interval, difficulty_level / float(_max_difficulty))
-	print("EnemySpawner.wait_time: ", _timer.wait_time)
+	_actual_level = difficulty_level
+	_timer.wait_time = lerp(_default_interval, _min_interval, _actual_level / float(_max_difficulty))
+	print("EnemySpawner._actual_level: ", _actual_level, ", wait_time: ", _timer.wait_time)
 
 
 func spawn():
@@ -27,7 +30,7 @@ func spawn():
 	var spawn_position := _calculate_spawn_position()
 	
 	# Instantiate
-	var enemy_instance = enemy_scene.instantiate()
+	var enemy_instance = levels_enemy_table.pick_by_level(_actual_level).instantiate()
 	GroupsUtils.entities_layer.add_child(enemy_instance)
 	enemy_instance.global_position = spawn_position
 

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="LevelsEnemyTable" load_steps=13 format=3 uid="uid://dio473dd6uihu"]
+
+[ext_resource type="Script" path="res://resources/level_enemies_tables/levels_enemy_table.gd" id="1_ew7tb"]
+[ext_resource type="PackedScene" uid="uid://d4h5p3n1nj8r" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="1_x7r1w"]
+[ext_resource type="Script" path="res://resources/level_enemies_tables/enemy_weight.gd" id="2_7ot8w"]
+[ext_resource type="Script" path="res://resources/level_enemies_tables/level_enemy_table.gd" id="3_0rx7o"]
+[ext_resource type="PackedScene" uid="uid://pr1ocrrkg6kb" path="res://Scenes/game_objects/enemy_wizard/enemy_wizard.tscn" id="4_ax2rj"]
+
+[sub_resource type="Resource" id="Resource_1tfrw"]
+script = ExtResource("2_7ot8w")
+weight = 100
+scene = ExtResource("1_x7r1w")
+
+[sub_resource type="Resource" id="Resource_vksoa"]
+script = ExtResource("3_0rx7o")
+level = 1
+enemy_table = Array[ExtResource("2_7ot8w")]([SubResource("Resource_1tfrw")])
+
+[sub_resource type="Resource" id="Resource_i80ot"]
+script = ExtResource("2_7ot8w")
+weight = 20
+scene = ExtResource("1_x7r1w")
+
+[sub_resource type="Resource" id="Resource_ti8av"]
+script = ExtResource("2_7ot8w")
+weight = 80
+scene = ExtResource("4_ax2rj")
+
+[sub_resource type="Resource" id="Resource_oelhm"]
+script = ExtResource("3_0rx7o")
+level = 4
+enemy_table = Array[ExtResource("2_7ot8w")]([SubResource("Resource_i80ot"), SubResource("Resource_ti8av")])
+
+[sub_resource type="Resource" id="Resource_gy06l"]
+script = ExtResource("2_7ot8w")
+weight = 100
+scene = ExtResource("4_ax2rj")
+
+[sub_resource type="Resource" id="Resource_ftxyo"]
+script = ExtResource("3_0rx7o")
+level = 10
+enemy_table = Array[ExtResource("2_7ot8w")]([SubResource("Resource_gy06l")])
+
+[resource]
+script = ExtResource("1_ew7tb")
+enemies_tables = Array[ExtResource("3_0rx7o")]([SubResource("Resource_vksoa"), SubResource("Resource_oelhm"), SubResource("Resource_ftxyo")])

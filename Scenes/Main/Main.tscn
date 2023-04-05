@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3b6iivl6mko3"]
+[gd_scene load_steps=14 format=3 uid="uid://bvqjpfjr640p1"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://brq02nvice0wv" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
 [ext_resource type="PackedScene" uid="uid://bsa22pwkbrx7b" path="res://Scenes/managers/end_screen_manager.tscn" id="7_o17gm"]
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
-[ext_resource type="PackedScene" uid="uid://pr1ocrrkg6kb" path="res://Scenes/game_objects/enemy_wizard/enemy_wizard.tscn" id="10_6bqoa"]
+[ext_resource type="Resource" uid="uid://dio473dd6uihu" path="res://resources/level_enemies_tables/game_enemy_table_easy.tres" id="10_sb8gf"]
 
 [node name="Main" type="Node"]
 
@@ -35,7 +35,7 @@ upgrade_screen_scene = ExtResource("6_y2ku4")
 [node name="DifficultyManager" parent="." instance=ExtResource("8_3fpqk")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("1_23xqv")]
-enemy_scene = ExtResource("10_6bqoa")
+levels_enemy_table = ExtResource("10_sb8gf")
 
 [node name="GameCamera" parent="." instance=ExtResource("3_g0q8l")]
 
