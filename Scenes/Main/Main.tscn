@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvqjpfjr640p1"]
+[gd_scene load_steps=15 format=3 uid="uid://bvqjpfjr640p1"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bsa22pwkbrx7b" path="res://Scenes/managers/end_screen_manager.tscn" id="7_o17gm"]
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
 [ext_resource type="Resource" uid="uid://bbgs6tef26xa8" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
+[ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="14_r6vlc"]
 
 [node name="Main" type="Node"]
 
@@ -49,6 +50,42 @@ y_sort_enabled = true
 
 [node name="Player" parent="EntitiesLayer" instance=ExtResource("1_3f0ui")]
 position = Vector2(345, 244)
+
+[node name="ExperienceVial" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(317, 175)
+
+[node name="ExperienceVial2" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(361, 180)
+
+[node name="ExperienceVial3" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(395, 202)
+
+[node name="ExperienceVial4" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(420, 224)
+
+[node name="ExperienceVial5" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(444, 252)
+
+[node name="ExperienceVial6" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(447, 270)
+
+[node name="ExperienceVial7" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(436, 289)
+
+[node name="ExperienceVial8" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(421, 301)
+
+[node name="ExperienceVial9" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(421, 301)
+
+[node name="ExperienceVial10" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(382, 316)
+
+[node name="ExperienceVial11" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(334, 318)
+
+[node name="ExperienceVial12" parent="EntitiesLayer" instance=ExtResource("14_r6vlc")]
+position = Vector2(334, 318)
 
 [node name="ForegroundLayer" type="Node2D" parent="." groups=["foreground_layer"]]
 y_sort_enabled = true
