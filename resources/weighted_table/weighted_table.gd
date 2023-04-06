@@ -1,7 +1,6 @@
 class_name WeightedTable
 extends Resource
 
-@export var level: int
 @export var table: Array[WeightedElement] = [] : set = _set_table
 
 var _total_weight := 0

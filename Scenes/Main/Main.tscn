@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bvqjpfjr640p1"]
+[gd_scene load_steps=17 format=3 uid="uid://bvqjpfjr640p1"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
@@ -9,11 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://1rc432x80f2i" path="res://Scenes/ui/experience_bar.tscn" id="2_rt856"]
 [ext_resource type="PackedScene" uid="uid://c41w1sn5oo1bw" path="res://environment/game_camera.tscn" id="3_g0q8l"]
 [ext_resource type="PackedScene" uid="uid://bx314cead33f2" path="res://Scenes/managers/upgrade_manager.tscn" id="5_imy0s"]
+[ext_resource type="Script" path="res://resources/weighted_table/weighted_table.gd" id="6_welb6"]
 [ext_resource type="PackedScene" uid="uid://brq02nvice0wv" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
 [ext_resource type="PackedScene" uid="uid://bsa22pwkbrx7b" path="res://Scenes/managers/end_screen_manager.tscn" id="7_o17gm"]
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
 [ext_resource type="Resource" uid="uid://b71exij8f41lq" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="14_r6vlc"]
+
+[sub_resource type="Resource" id="Resource_xtv76"]
+script = ExtResource("6_welb6")
+table = Array[Resource("res://resources/weighted_table/weighted_element.gd")]([])
 
 [node name="Main" type="Node"]
 
@@ -29,6 +34,7 @@ target_growth = 1
 [node name="ArenaTimeManager" parent="." instance=ExtResource("1_poucw")]
 
 [node name="UpgradeManager" parent="." instance=ExtResource("5_imy0s")]
+upgrade_pool = SubResource("Resource_xtv76")
 upgrade_screen_scene = ExtResource("6_y2ku4")
 
 [node name="EndScreenManager" parent="." instance=ExtResource("7_o17gm")]

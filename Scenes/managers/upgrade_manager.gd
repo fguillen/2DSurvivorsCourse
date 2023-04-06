@@ -6,7 +6,7 @@ extends Node
 # enums
 # constants
 # exported variables
-@export var upgrade_pool: Array[AbilityUpgrade]
+@export var upgrade_pool: WeightedTable
 @export var upgrade_screen_scene:PackedScene
 
 # public variables
@@ -15,6 +15,7 @@ var current_upgrades = {}
 # private variables
 # onready variables
 # optional built-in virtual _init method
+
 # optional built-in virtual _enter_tree() method
 # built-in virtual _ready method
 # remaining built-in virtual methods
