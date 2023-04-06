@@ -8,3 +8,4 @@ id = "sword_rate"
 max_quantity = 5
 name = "Sword Quickness"
 description = "Increase sword attack rate by 10%"
+required_id = "sword_acquisition"

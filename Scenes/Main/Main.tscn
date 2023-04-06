@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvqjpfjr640p1"]
+[gd_scene load_steps=30 format=3 uid="uid://bvqjpfjr640p1"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
@@ -16,7 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
 [ext_resource type="Script" path="res://resources/weighted_table/weighted_element.gd" id="8_r5j3i"]
 [ext_resource type="Resource" uid="uid://dhs0wnu8dqu1p" path="res://resources/upgrades/sword_rate.tres" id="9_so4hm"]
+[ext_resource type="Resource" uid="uid://dsa2yaqkauu1r" path="res://resources/upgrades/sword_acquisition.tres" id="9_ye0it"]
 [ext_resource type="Resource" uid="uid://b71exij8f41lq" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
+[ext_resource type="Resource" uid="uid://e7c03sksid48" path="res://resources/upgrades/sword_damage.tres" id="11_qowok"]
+[ext_resource type="Resource" uid="uid://cmypwphwhbgqa" path="res://resources/upgrades/axe_rate.tres" id="12_66hv0"]
+[ext_resource type="Resource" uid="uid://b26g6hqqmlmye" path="res://resources/upgrades/axe_damage.tres" id="13_oj8lj"]
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="14_r6vlc"]
 
 [sub_resource type="Resource" id="Resource_up3r5"]
@@ -27,11 +31,31 @@ content = ExtResource("7_i5hg1")
 [sub_resource type="Resource" id="Resource_hldq3"]
 script = ExtResource("8_r5j3i")
 weight = 10
+content = ExtResource("9_ye0it")
+
+[sub_resource type="Resource" id="Resource_3br2o"]
+script = ExtResource("8_r5j3i")
+weight = 10
 content = ExtResource("9_so4hm")
+
+[sub_resource type="Resource" id="Resource_yqnvk"]
+script = ExtResource("8_r5j3i")
+weight = 10
+content = ExtResource("11_qowok")
+
+[sub_resource type="Resource" id="Resource_gefpg"]
+script = ExtResource("8_r5j3i")
+weight = 10
+content = ExtResource("12_66hv0")
+
+[sub_resource type="Resource" id="Resource_vdrbi"]
+script = ExtResource("8_r5j3i")
+weight = 10
+content = ExtResource("13_oj8lj")
 
 [sub_resource type="Resource" id="Resource_xtv76"]
 script = ExtResource("6_welb6")
-table = Array[ExtResource("8_r5j3i")]([SubResource("Resource_up3r5"), SubResource("Resource_hldq3")])
+table = Array[ExtResource("8_r5j3i")]([SubResource("Resource_up3r5"), SubResource("Resource_hldq3"), SubResource("Resource_3br2o"), SubResource("Resource_yqnvk"), SubResource("Resource_gefpg"), SubResource("Resource_vdrbi")])
 
 [node name="Main" type="Node"]
 
@@ -47,6 +71,7 @@ target_growth = 1
 [node name="ArenaTimeManager" parent="." instance=ExtResource("1_poucw")]
 
 [node name="UpgradeManager" parent="." instance=ExtResource("5_imy0s")]
+default_upgrade = ExtResource("9_ye0it")
 upgrade_pool = SubResource("Resource_xtv76")
 upgrade_screen_scene = ExtResource("6_y2ku4")
 

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://cmypwphwhbgqa"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_24ji0"]
+
+[resource]
+script = ExtResource("1_24ji0")
+id = "axe_rate"
+max_quantity = 5
+name = "Axe Quickness"
+description = "Increase axe attack rate by 10%"
+required_id = "axe_acquisition"

@@ -5,3 +5,4 @@ extends Resource
 @export var max_quantity: int = 1
 @export var name: String
 @export_multiline var description: String
+@export var required_id: String
