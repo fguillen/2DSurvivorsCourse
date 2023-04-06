@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp6ew77l1wfph"]
+
+[ext_resource type="Script" path="res://test/test.gd" id="1_lsoup"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_lsoup")

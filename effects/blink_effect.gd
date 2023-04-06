@@ -24,7 +24,7 @@ var _tween: Tween
 # 14. built-in virtual _ready method
 # 15. remaining built-in virtual methods
 # 16. public methods
-func perform(value):
+func perform():
 	if _tween != null and _tween.is_valid():
 		_tween.kill()
 	

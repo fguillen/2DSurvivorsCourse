@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d4h5p3n1nj8r"]
+[gd_scene load_steps=17 format=3 uid="uid://d4h5p3n1nj8r"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/enemy_base/enemy_base.gd" id="1_6rqo2"]
 [ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="1_iil1o"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://effects/dead_effect.tscn" id="7_dp8xu"]
 [ext_resource type="PackedScene" uid="uid://bvlqim7863t6i" path="res://effects/floating_text.tscn" id="8_2uwwt"]
 [ext_resource type="PackedScene" uid="uid://dinlfgaorw876" path="res://effects/blink_effect.tscn" id="9_1oqn7"]
+[ext_resource type="Shader" path="res://effects/blink_effect.gdshader" id="10_b1sy8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lm0i"]
 
@@ -90,6 +91,12 @@ _data = {
 "walk": SubResource("Animation_4hha6")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fo2es"]
+resource_local_to_scene = true
+shader = ExtResource("10_b1sy8")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
 [node name="EnemyBase" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 5
@@ -136,10 +143,11 @@ replicate = true
 
 [node name="BlinkEffect" parent="Effects" node_paths=PackedStringArray("sprite") instance=ExtResource("9_1oqn7")]
 sprite = NodePath("../../FlipTowardsDirectionWrapper/Sprite2D")
+material = SubResource("ShaderMaterial_fo2es")
 
 [connection signal="died" from="." to="VialDropperComponent" method="drop"]
 [connection signal="died" from="." to="Effects/DeadEffect" method="perform"]
 [connection signal="out_of_health" from="HealthComponent" to="." method="die"]
 [connection signal="got_hurt" from="HurtboxComponent" to="HealthComponent" method="damage"]
 [connection signal="got_hurt" from="HurtboxComponent" to="Effects/FloatingText" method="perform"]
-[connection signal="got_hurt" from="HurtboxComponent" to="Effects/BlinkEffect" method="perform"]
+[connection signal="got_hurt" from="HurtboxComponent" to="Effects/BlinkEffect" method="perform" unbinds=1]

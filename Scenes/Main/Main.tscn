@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bvqjpfjr640p1"]
+[gd_scene load_steps=22 format=3 uid="uid://bvqjpfjr640p1"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
@@ -11,14 +11,27 @@
 [ext_resource type="PackedScene" uid="uid://bx314cead33f2" path="res://Scenes/managers/upgrade_manager.tscn" id="5_imy0s"]
 [ext_resource type="Script" path="res://resources/weighted_table/weighted_table.gd" id="6_welb6"]
 [ext_resource type="PackedScene" uid="uid://brq02nvice0wv" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
+[ext_resource type="Resource" uid="uid://dmi6q2gt5sww7" path="res://resources/upgrades/axe_acquisition.tres" id="7_i5hg1"]
 [ext_resource type="PackedScene" uid="uid://bsa22pwkbrx7b" path="res://Scenes/managers/end_screen_manager.tscn" id="7_o17gm"]
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
+[ext_resource type="Script" path="res://resources/weighted_table/weighted_element.gd" id="8_r5j3i"]
+[ext_resource type="Resource" uid="uid://dhs0wnu8dqu1p" path="res://resources/upgrades/sword_rate.tres" id="9_so4hm"]
 [ext_resource type="Resource" uid="uid://b71exij8f41lq" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="14_r6vlc"]
 
+[sub_resource type="Resource" id="Resource_up3r5"]
+script = ExtResource("8_r5j3i")
+weight = 10
+content = ExtResource("7_i5hg1")
+
+[sub_resource type="Resource" id="Resource_hldq3"]
+script = ExtResource("8_r5j3i")
+weight = 10
+content = ExtResource("9_so4hm")
+
 [sub_resource type="Resource" id="Resource_xtv76"]
 script = ExtResource("6_welb6")
-table = Array[Resource("res://resources/weighted_table/weighted_element.gd")]([])
+table = Array[ExtResource("8_r5j3i")]([SubResource("Resource_up3r5"), SubResource("Resource_hldq3")])
 
 [node name="Main" type="Node"]
 

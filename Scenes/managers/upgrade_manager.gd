@@ -13,16 +13,23 @@ extends Node
 var current_upgrades = {}
 
 # private variables
+var _original_upgrade_pool: WeightedTable
+
 # onready variables
 # optional built-in virtual _init method
 
 # optional built-in virtual _enter_tree() method
 # built-in virtual _ready method
+func _ready():
+	_original_upgrade_pool = upgrade_pool.duplicate()
+	_clean_upgrade_pool()
+	
+	
 # remaining built-in virtual methods
 # public methods
 func show_upgrade_screen(current_level:int):
 	# Picking ability upgrades
-	var ability_upgrades_chosen = _pick_random_upgrades()
+	var ability_upgrades_chosen = _pick_random_upgrades(2)
 	if ability_upgrades_chosen.size() == 0:
 		push_warning("UpgradeManager not available ability upgrades")
 		return
@@ -37,22 +44,12 @@ func show_upgrade_screen(current_level:int):
 	
 
 # private methods
-func _filter_upgrade_pool_available() -> Array[AbilityUpgrade]:
-	return upgrade_pool.filter(
-			func(ability_upgrade):
-				if not current_upgrades.has(ability_upgrade["id"]):
-					return true
-				else:
-					return current_upgrades[ability_upgrade["id"]]["quantity"] < ability_upgrade.max_quantity
-	)		
-	
-	
 func _pick_random_upgrades(quantity: int = 2) -> Array[AbilityUpgrade]:
-	var ability_upgrades_chosen = _filter_upgrade_pool_available()
-	ability_upgrades_chosen.shuffle()
-	ability_upgrades_chosen = ability_upgrades_chosen.slice(0, quantity)
-		
-	return ability_upgrades_chosen
+	var result: Array[AbilityUpgrade] = [] 
+	for i in upgrade_pool.pick_many(quantity, false):
+		result.append(i as AbilityUpgrade)
+	
+	return result
 	
 		
 func _apply_ability_upgrade(ability_upgrade:AbilityUpgrade):
@@ -64,7 +61,22 @@ func _apply_ability_upgrade(ability_upgrade:AbilityUpgrade):
 	else:
 		current_upgrades[ability_upgrade["id"]]["quantity"] += 1
 		
+	_clean_upgrade_pool()
+	
 	GameEvents.emit_ability_upgrade_added(ability_upgrade)
+
+
+func _clean_upgrade_pool():
+	# Filter out by max_quantity
+	var clean_table = _original_upgrade_pool.table
+	clean_table = clean_table.filter(
+		func(e):
+			if not current_upgrades.has(e.content["id"]):
+				return true
+			else:
+				return current_upgrades[e.content["id"]]["quantity"] < e.content.max_quantity
+	)	
+	upgrade_pool.table = clean_table
 	
 	
 # subclasses

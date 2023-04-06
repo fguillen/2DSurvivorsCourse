@@ -9,7 +9,7 @@
 [sub_resource type="Resource" id="Resource_kgytt"]
 script = ExtResource("2_7ot8w")
 weight = 10
-element = ExtResource("1_x7r1w")
+content = ExtResource("1_x7r1w")
 
 [sub_resource type="Resource" id="Resource_uuuv6"]
 script = ExtResource("3_0rx7o")
