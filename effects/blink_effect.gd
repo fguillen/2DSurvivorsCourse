@@ -33,7 +33,7 @@ func perform(value):
 	(sprite.material as ShaderMaterial).set_shader_parameter("percent", 1.0)
 	_tween = create_tween()
 	_tween.tween_property(sprite.material, "shader_parameter/percent", 0.0, time).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
-	_tween.tween_callback(_recover_material)
+	_tween.tween_callback(_recover_material.bind(original_material))
 
 	
 # 17. private methods

@@ -45,7 +45,7 @@ func perform(value):
 # 17. private methods
 func _animate():
 	var final_position_1 = global_position + (Vector2.UP * 16)
-	var final_position_2 = global_position + (Vector2.UP * 24)
+#	var final_position_2 = global_position + (Vector2.UP * 24)
 	
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", final_position_1, 0.5)\
