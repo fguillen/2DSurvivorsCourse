@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://p1fpydn5uxgu"]
+
+[ext_resource type="Script" path="res://test/scene_test_enemy_floating_text.gd" id="1_pnrye"]
+[ext_resource type="PackedScene" uid="uid://d4h5p3n1nj8r" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="1_v32m7"]
+[ext_resource type="PackedScene" uid="uid://07vxyye27dnq" path="res://Scenes/abilities/sword/sword_ability_controller.tscn" id="10_6gbdu"]
+
+[node name="SceneTest_EnemyFloatingText" type="Node2D"]
+script = ExtResource("1_pnrye")
+
+[node name="EnemyBase" parent="." instance=ExtResource("1_v32m7")]
+position = Vector2(142, 132)
+
+[node name="HealthComponent" parent="EnemyBase" index="0"]
+max_health = 100
+
+[node name="SwordAbilityController" parent="." instance=ExtResource("10_6gbdu")]
+position = Vector2(166, 136)
+
+[node name="Timer" parent="SwordAbilityController" index="0"]
+wait_time = 2.0
+
+[node name="ForegroundLayer" type="Node2D" parent="." groups=["foreground_layer"]]
+y_sort_enabled = true
+
+[editable path="EnemyBase"]
+[editable path="SwordAbilityController"]
