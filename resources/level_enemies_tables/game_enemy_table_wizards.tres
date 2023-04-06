@@ -1,20 +1,20 @@
-[gd_resource type="Resource" script_class="LevelsEnemyTable" load_steps=7 format=3 uid="uid://bbgs6tef26xa8"]
+[gd_resource type="Resource" script_class="LevelsEnemyTable" load_steps=7 format=3 uid="uid://b71exij8f41lq"]
 
-[ext_resource type="Script" path="res://resources/level_enemies_tables/enemy_weight.gd" id="2_qip6f"]
-[ext_resource type="Script" path="res://resources/level_enemies_tables/level_enemy_table.gd" id="3_352c8"]
-[ext_resource type="PackedScene" uid="uid://pr1ocrrkg6kb" path="res://Scenes/game_objects/enemy_wizard/enemy_wizard.tscn" id="4_26uvq"]
+[ext_resource type="Script" path="res://resources/weighted_table/weighted_table.gd" id="1_jqd0y"]
+[ext_resource type="PackedScene" uid="uid://d4h5p3n1nj8r" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="2_pkbo1"]
+[ext_resource type="Script" path="res://resources/weighted_table/weighted_element.gd" id="3_h1xic"]
 [ext_resource type="Script" path="res://resources/level_enemies_tables/levels_enemy_table.gd" id="5_vjlpg"]
 
-[sub_resource type="Resource" id="Resource_1tfrw"]
-script = ExtResource("2_qip6f")
-weight = 100
-scene = ExtResource("4_26uvq")
+[sub_resource type="Resource" id="Resource_uoqi2"]
+script = ExtResource("3_h1xic")
+weight = 1
+element = ExtResource("2_pkbo1")
 
 [sub_resource type="Resource" id="Resource_vksoa"]
-script = ExtResource("3_352c8")
+script = ExtResource("1_jqd0y")
 level = 1
-enemy_table = Array[ExtResource("2_qip6f")]([SubResource("Resource_1tfrw")])
+table = Array[ExtResource("3_h1xic")]([SubResource("Resource_uoqi2")])
 
 [resource]
 script = ExtResource("5_vjlpg")
-enemies_tables = Array[ExtResource("3_352c8")]([SubResource("Resource_vksoa")])
+enemies_tables = Array[ExtResource("1_jqd0y")]([SubResource("Resource_vksoa")])

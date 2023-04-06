@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://brq02nvice0wv" path="res://Scenes/ui/upgrade_screen.tscn" id="6_y2ku4"]
 [ext_resource type="PackedScene" uid="uid://bsa22pwkbrx7b" path="res://Scenes/managers/end_screen_manager.tscn" id="7_o17gm"]
 [ext_resource type="PackedScene" uid="uid://cyviyvtn2v5nj" path="res://Scenes/managers/difficulty_manager.tscn" id="8_3fpqk"]
-[ext_resource type="Resource" uid="uid://bbgs6tef26xa8" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
+[ext_resource type="Resource" uid="uid://b71exij8f41lq" path="res://resources/level_enemies_tables/game_enemy_table_wizards.tres" id="10_vpnxf"]
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="14_r6vlc"]
 
 [node name="Main" type="Node"]

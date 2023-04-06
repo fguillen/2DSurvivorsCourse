@@ -1,7 +1,7 @@
 class_name LevelsEnemyTable
 extends Resource
 
-@export var enemies_tables: Array[LevelEnemyTable] = [] : set = _set_enemies_tables
+@export var enemies_tables: Array[WeightedTable] = [] : set = _set_enemies_tables
 
 func pick_by_level(actual_level: int) -> PackedScene:
 	var result
@@ -13,10 +13,10 @@ func pick_by_level(actual_level: int) -> PackedScene:
 	else:
 		result =  items_lower_than_actual_level[-1]
 		
-	return result.pick()
+	return result.pick() as PackedScene
 
 
-func _set_enemies_tables(value: Array[LevelEnemyTable]):
+func _set_enemies_tables(value: Array[WeightedTable]):
 	enemies_tables = value
 	enemies_tables.sort_custom(func(a, b): return a.level < b.level)
 	
