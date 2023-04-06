@@ -16,8 +16,45 @@ func pick() -> Resource:
 		if random_index <= actual_index:
 			return i.element
 		
-	push_error("WeightedTable.pick() not Resource found")
+	push_warning("WeightedTable.pick() not element found")
 	return null
+	
+
+func pick_many(amount: int, duplicate: bool = true) -> Array[Resource]:
+	if duplicate:
+		return _pick_many_duplicate(amount)
+	else: 
+		return _pick_many_no_duplicate(amount)
+	
+	
+func _pick_many_duplicate(amount: int) -> Array[Resource]:
+	var result: Array[Resource] = []
+	
+	for i in amount:
+		var element = pick()
+		if element:
+			result.append(element)
+		else:
+			break # no more elments
+		
+	return result
+	
+	
+func _pick_many_no_duplicate(amount: int) -> Array[Resource]:
+	var original_table = table.duplicate()
+	var result: Array[Resource] = []
+	
+	for i in amount:
+		var element = pick()
+		if element: 
+			result.append(element)
+			table.erase(element)
+			_total_weight -= element.weight
+		else:
+			break # no more elments
+		
+	self.table = original_table
+	return result
 	
 	
 func _set_table(value: Array[WeightedElement]):
