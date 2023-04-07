@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn2dpqwf6wr1d"]
+
+[ext_resource type="Script" path="res://effects/sound_effect.gd" id="1_flci2"]
+
+[node name="SoundEffect" type="AudioStreamPlayer2D"]
+bus = &"SFX"
+script = ExtResource("1_flci2")
