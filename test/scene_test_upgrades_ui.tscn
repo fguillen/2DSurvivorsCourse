@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsqdbenk10u7b"]
+
+[ext_resource type="PackedScene" uid="uid://ceuaufu3bg86b" path="res://Scenes/ui/ability_upgrade_card.tscn" id="1_rixsp"]
+
+[node name="SceneTest_UpgradesUI" type="Node"]
+
+[node name="AbilityUpgradeCard" parent="." instance=ExtResource("1_rixsp")]

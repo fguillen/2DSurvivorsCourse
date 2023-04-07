@@ -1,5 +1,5 @@
 class_name AbilityUpgradeCard
-extends Panel
+extends PanelContainer
 
 # @tool
 # class_name

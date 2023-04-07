@@ -2,21 +2,44 @@
 
 [ext_resource type="Script" path="res://Scenes/ui/ability_upgrade_card.gd" id="1_nbwrv"]
 
-[node name="AbilityUpgradeCard" type="Panel"]
+[node name="AbilityUpgradeCard" type="PanelContainer"]
 custom_minimum_size = Vector2(120, 160)
 script = ExtResource("1_nbwrv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
-[node name="NameLabel" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_type_variation = &"AlternativePanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Test Name"
+theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "Test Longname"
+vertical_alignment = 2
+autowrap_mode = 2
 
-[node name="DescriptionLabel" type="Label" parent="VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Test long description of the property"
