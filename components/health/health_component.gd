@@ -17,10 +17,12 @@ func _ready():
 func damage(value:int):
 	health = max(health - value, 0)
 	_log("%s.HealthComponent.damage: %d, health: %d" % [owner.name, value, health])
-	emit_signal("health_changed", health, max_health)
+	health_changed.emit(health, max_health)
+	GameEvents.emit_character_hurt(owner, value)
 	
 	if health == 0:
-		emit_signal("out_of_health")
+		out_of_health.emit()
+		
 	
 		
 func _log(message: String):
