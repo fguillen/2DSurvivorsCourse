@@ -46,4 +46,7 @@ func _on_gui_input(event: InputEvent):
 		_on_selected()
 
 
+func _on_mouse_entered():
+	$HoverAnimationPlayer.play("hover")
+
 # subclasses

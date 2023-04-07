@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceuaufu3bg86b"]
+[gd_scene load_steps=8 format=3 uid="uid://ceuaufu3bg86b"]
 
 [ext_resource type="Script" path="res://Scenes/ui/ability_upgrade_card.gd" id="1_nbwrv"]
 
@@ -64,6 +64,44 @@ _data = {
 "in": SubResource("Animation_2eeyk")
 }
 
+[sub_resource type="Animation" id="Animation_hef2n"]
+resource_name = "hover"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_cx2ga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kely5"]
+_data = {
+"RESET": SubResource("Animation_cx2ga"),
+"hover": SubResource("Animation_hef2n")
+}
+
 [node name="AbilityUpgradeCard" type="PanelContainer"]
 custom_minimum_size = Vector2(120, 160)
 anchors_preset = 8
@@ -84,6 +122,7 @@ script = ExtResource("1_nbwrv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
@@ -91,14 +130,16 @@ theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-mouse_filter = 1
+mouse_filter = 2
 theme_type_variation = &"AlternativePanelContainer"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
@@ -126,4 +167,10 @@ libraries = {
 "": SubResource("AnimationLibrary_wn4td")
 }
 
+[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kely5")
+}
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
