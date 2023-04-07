@@ -24,23 +24,26 @@ var ability_upgrade: AbilityUpgrade : set = _set_ability_upgrade
 # built-in virtual _ready method
 # remaining built-in virtual methods
 # public methods
+func animation_in(delay: float):
+	modulate = Color.TRANSPARENT
+	await get_tree().create_timer(delay).timeout
+	$AnimationPlayer.play("in")
+
 
 # private methods
 func _set_ability_upgrade(value: AbilityUpgrade):
 	ability_upgrade = value
-	name_label.text = ability_upgrade.name	
+	name_label.text = ability_upgrade.name
 	description_label.text = ability_upgrade.description
 
 
 func _on_selected():
-	emit_signal("ability_upgrade_selected", ability_upgrade)	
-	
-	
+	emit_signal("ability_upgrade_selected", ability_upgrade)
+
+
 func _on_gui_input(event: InputEvent):
 	if event.is_action_pressed("mouse_left"):
 		_on_selected()
 
 
 # subclasses
-
-

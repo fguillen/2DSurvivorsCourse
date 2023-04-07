@@ -23,16 +23,19 @@ signal ability_upgrade_selected(ability_upgrade: AbilityUpgrade)
 # built-in virtual _ready method
 func _ready():
 	get_tree().paused = true
-	
-	
+
+
 # remaining built-in virtual methods
 # public methods
 func set_ability_upgrades(ability_upgrades: Array[AbilityUpgrade]):
+	var delay = 0
 	for ability_upgrade in ability_upgrades:
 		var ability_upgrade_card:AbilityUpgradeCard = ability_upgrade_card_scene.instantiate()
 		ability_upgrade_cards_container.add_child(ability_upgrade_card)
 		ability_upgrade_card.ability_upgrade = ability_upgrade
 		ability_upgrade_card.ability_upgrade_selected.connect(_on_ability_upgrade_selected)
+		ability_upgrade_card.animation_in(delay)
+		delay += 0.2
 
 
 # private methods
@@ -40,7 +43,6 @@ func _on_ability_upgrade_selected(ability_upgrade: AbilityUpgrade):
 	emit_signal("ability_upgrade_selected", ability_upgrade)
 	get_tree().paused = false
 	queue_free()
-	
-		
-# subclasses
 
+
+# subclasses

@@ -22,4 +22,4 @@ table = SubResource("Resource_pq54t")
 
 [resource]
 script = ExtResource("5_vjlpg")
-level_enemy_tables = Array[Resource]([SubResource("Resource_sx8ns")])
+level_enemy_tables = Array[ExtResource("3_352c8")]([SubResource("Resource_sx8ns")])
