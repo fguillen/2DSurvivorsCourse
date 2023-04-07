@@ -1,19 +1,24 @@
 class_name Player
 extends CharacterBody2D
 
-const MAX_SPEED = 120
-const ACCELERATION = 15
+@export var base_speed := 90.0
+@export var acceleration := 15.0
 
 signal has_died()
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var direction := Vector2.ZERO
 
+var _actual_speed := 0.0
+
+func _ready():
+	_actual_speed = base_speed
+	GameEvents.ability_upgrade_added.connect(_on_ability_upgrade_added)
 
 func _physics_process(delta):
 	direction = _get_direction()
-	var target_velocity = direction * MAX_SPEED
-	velocity = velocity.lerp(target_velocity, ACCELERATION * delta)
+	var target_velocity = direction * _actual_speed
+	velocity = velocity.lerp(target_velocity, acceleration * delta)
 #	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION)
 	move_and_slide()
 	_update_animation()
@@ -36,3 +41,8 @@ func _update_animation():
 	else:
 		animation_player.play("RESET")
 		
+
+func _on_ability_upgrade_added(ability_upgrade: AbilityUpgrade):
+	if ability_upgrade.id == "player_speed":
+		_actual_speed += _actual_speed * 0.1
+		print("Player._actual_speed: ", _actual_speed)

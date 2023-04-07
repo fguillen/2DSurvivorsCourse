@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="WeightedTable" load_steps=17 format=3 uid="uid://bjn0xvsb8xr5j"]
+
+[ext_resource type="Script" path="res://resources/weighted_table/weighted_table.gd" id="1_x8eud"]
+[ext_resource type="Resource" uid="uid://dmi6q2gt5sww7" path="res://resources/upgrades/axe_acquisition.tres" id="2_rcffc"]
+[ext_resource type="Script" path="res://resources/weighted_table/weighted_element.gd" id="3_f4ueh"]
+[ext_resource type="Resource" uid="uid://dsa2yaqkauu1r" path="res://resources/upgrades/sword_acquisition.tres" id="4_ga77c"]
+[ext_resource type="Resource" uid="uid://dhs0wnu8dqu1p" path="res://resources/upgrades/sword_rate.tres" id="5_uvawt"]
+[ext_resource type="Resource" uid="uid://e7c03sksid48" path="res://resources/upgrades/sword_damage.tres" id="6_qf3aa"]
+[ext_resource type="Resource" uid="uid://cmypwphwhbgqa" path="res://resources/upgrades/axe_rate.tres" id="7_qh7nn"]
+[ext_resource type="Resource" uid="uid://b26g6hqqmlmye" path="res://resources/upgrades/axe_damage.tres" id="8_qv0pv"]
+[ext_resource type="Resource" uid="uid://c41wqtv0x2jab" path="res://resources/upgrades/player_speed.tres" id="9_aurki"]
+
+[sub_resource type="Resource" id="Resource_up3r5"]
+script = ExtResource("3_f4ueh")
+weight = 10
+content = ExtResource("2_rcffc")
+
+[sub_resource type="Resource" id="Resource_hldq3"]
+script = ExtResource("3_f4ueh")
+weight = 10
+content = ExtResource("4_ga77c")
+
+[sub_resource type="Resource" id="Resource_3br2o"]
+script = ExtResource("3_f4ueh")
+weight = 10
+content = ExtResource("5_uvawt")
+
+[sub_resource type="Resource" id="Resource_yqnvk"]
+script = ExtResource("3_f4ueh")
+weight = 10
+content = ExtResource("6_qf3aa")
+
+[sub_resource type="Resource" id="Resource_gefpg"]
+script = ExtResource("3_f4ueh")
+weight = 10
+content = ExtResource("7_qh7nn")
+
+[sub_resource type="Resource" id="Resource_vdrbi"]
+script = ExtResource("3_f4ueh")
+weight = 10
+content = ExtResource("8_qv0pv")
+
+[sub_resource type="Resource" id="Resource_v0dp7"]
+script = ExtResource("3_f4ueh")
+weight = 5
+content = ExtResource("9_aurki")
+
+[resource]
+script = ExtResource("1_x8eud")
+table = Array[ExtResource("3_f4ueh")]([SubResource("Resource_up3r5"), SubResource("Resource_hldq3"), SubResource("Resource_3br2o"), SubResource("Resource_yqnvk"), SubResource("Resource_gefpg"), SubResource("Resource_vdrbi"), SubResource("Resource_v0dp7")])
