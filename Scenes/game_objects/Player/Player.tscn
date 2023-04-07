@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwpp4bl441cr3"]
+[gd_scene load_steps=16 format=3 uid="uid://dwpp4bl441cr3"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/Player/Player.gd" id="1_5qcf4"]
 [ext_resource type="Texture2D" uid="uid://c4cj3derl7n8c" path="res://Scenes/game_objects/Player/Player_Sprite.png" id="1_xn35m"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bgb5spu3gxpml" path="res://components/health_bar_component.tscn" id="4_jlx6i"]
 [ext_resource type="PackedScene" uid="uid://bx71dq73xnr7y" path="res://components/abilities_inventory_component.tscn" id="5_tw51v"]
 [ext_resource type="PackedScene" uid="uid://7kd5yunag40" path="res://components/flip_towards_direction_wrapper.tscn" id="7_8qhfd"]
+[ext_resource type="PackedScene" uid="uid://cn2dpqwf6wr1d" path="res://effects/sound_effect.tscn" id="8_56teu"]
+[ext_resource type="AudioStream" uid="uid://bs03bwn260yll" path="res://assets/sounds/player_hurt.wav" id="9_ux0s6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8altu"]
 radius = 7.0
@@ -127,6 +129,13 @@ direction_object = NodePath("..")
 position = Vector2(0, -8)
 texture = ExtResource("1_xn35m")
 
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="SoundEffect" parent="Effects" instance=ExtResource("8_56teu")]
+random_pitch = true
+samples = Array[AudioStream]([ExtResource("9_ux0s6")])
+
 [connection signal="health_changed" from="HealthComponent" to="HealthBarComponent" method="set_health"]
 [connection signal="out_of_health" from="HealthComponent" to="." method="die"]
 [connection signal="got_hurt" from="HurtboxComponent" to="HealthComponent" method="damage"]
+[connection signal="got_hurt" from="HurtboxComponent" to="Effects/SoundEffect" method="perform" unbinds=1]
