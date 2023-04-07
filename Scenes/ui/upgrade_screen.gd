@@ -12,6 +12,8 @@ signal ability_upgrade_selected(ability_upgrade: AbilityUpgrade)
 # constants
 # exported variables
 @export var ability_upgrade_card_scene:PackedScene
+@onready var background_fade: BackgroundFade = $BackgroundFade
+
 
 # public variables
 # private variables
@@ -67,12 +69,12 @@ func _on_card_animation_finished():
 		
 
 func _animation_in():
-	$AnimationPlayer.play("in")
+	background_fade.fade_in()
 	
 	
 func _animation_out():
-	$AnimationPlayer.play("out")
-	await $AnimationPlayer.animation_finished
+	background_fade.fade_out()
+	await background_fade.fade_finished
 
 
 func _all_finished():
