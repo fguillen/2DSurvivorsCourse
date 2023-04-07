@@ -26,6 +26,7 @@ var _card_animations_missing := 0
 # built-in virtual _ready method
 func _ready():
 	get_tree().paused = true
+	_animation_in()
 
 
 # remaining built-in virtual methods
@@ -63,9 +64,19 @@ func _on_card_animation_finished():
 	_card_animations_missing -= 1
 	if _card_animations_missing == 0:
 		_all_finished()
+		
+
+func _animation_in():
+	$AnimationPlayer.play("in")
+	
+	
+func _animation_out():
+	$AnimationPlayer.play("out")
+	await $AnimationPlayer.animation_finished
 
 
 func _all_finished():
+	await _animation_out()
 	get_tree().paused = false
 	queue_free()
 
