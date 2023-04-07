@@ -7,6 +7,7 @@ extends PanelContainer
 # docstring
 # signals
 signal ability_upgrade_selected(ability_upgrade: AbilityUpgrade)
+signal animation_finished
 
 # enums
 # constants
@@ -15,6 +16,7 @@ signal ability_upgrade_selected(ability_upgrade: AbilityUpgrade)
 var ability_upgrade: AbilityUpgrade : set = _set_ability_upgrade
 
 # private variables
+
 # onready variables
 @onready var name_label: Label = %NameLabel
 @onready var description_label: Label = %DescriptionLabel
@@ -30,6 +32,14 @@ func animation_in(delay: float):
 	$AnimationPlayer.play("in")
 
 
+func animation_discarded(delay: float):
+	_disable()
+	await get_tree().create_timer(delay).timeout
+	$AnimationPlayer.play("discarded")
+	await $AnimationPlayer.animation_finished
+	animation_finished.emit()
+
+
 # private methods
 func _set_ability_upgrade(value: AbilityUpgrade):
 	ability_upgrade = value
@@ -37,8 +47,17 @@ func _set_ability_upgrade(value: AbilityUpgrade):
 	description_label.text = ability_upgrade.description
 
 
+func _disable():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
+
 func _on_selected():
-	emit_signal("ability_upgrade_selected", ability_upgrade)
+	_disable()
+	ability_upgrade_selected.emit(ability_upgrade)
+	$AnimationPlayer.play("selected")
+	await $AnimationPlayer.animation_finished
+	
+	animation_finished.emit()
 
 
 func _on_gui_input(event: InputEvent):
