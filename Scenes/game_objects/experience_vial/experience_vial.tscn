@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5k02ihpc3okp"]
+[gd_scene load_steps=6 format=3 uid="uid://b5k02ihpc3okp"]
 
 [ext_resource type="Texture2D" uid="uid://nsva56nih115" path="res://Scenes/game_objects/experience_vial/experience_vial.png" id="1_ey4hu"]
 [ext_resource type="Script" path="res://Scenes/game_objects/experience_vial/experience_vial.gd" id="1_y1nua"]
+[ext_resource type="PackedScene" uid="uid://cn2dpqwf6wr1d" path="res://effects/sound_effect.tscn" id="3_xdush"]
+[ext_resource type="AudioStream" uid="uid://bgyhvyvhpa336" path="res://assets/sounds/vial_pick.wav" id="4_0wf3c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wffo7"]
 
@@ -18,4 +20,13 @@ shape = SubResource("CircleShape2D_wffo7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ey4hu")
 
+[node name="Effects" type="Node2D" parent="."]
+
+[node name="SoundEffect" parent="Effects" instance=ExtResource("3_xdush")]
+volume_db = -10.0
+max_distance = 300.0
+random_pitch = true
+samples = Array[AudioStream]([ExtResource("4_0wf3c")])
+
+[connection signal="magnet_started" from="." to="Effects/SoundEffect" method="perform"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

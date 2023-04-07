@@ -1,6 +1,9 @@
 class_name ExperienceVial
 extends Node2D	
 
+signal magnet_started
+signal picked
+
 @onready var area_2d = $Area2D
 @onready var sprite = $Sprite2D
 
@@ -24,8 +27,11 @@ func _start_collecting():
 	tween.chain()
 	tween.tween_callback(_collect)
 	
+	magnet_started.emit()
+	
 	
 func _collect():
+	picked.emit()
 	GameEvents.emit_experiece_vial_collected(1)
 	queue_free()
 

@@ -8,6 +8,7 @@ extends AudioStreamPlayer2D
 
 func perform(reparent_and_free := false):
 	if samples.is_empty():
+		push_warning("SoundEffect.samples is empty")
 		return
 	
 	if random_pitch:
@@ -15,6 +16,7 @@ func perform(reparent_and_free := false):
 	
 	stream = _random_sample()
 	var starting_seek = 0.0 if not start_at_random_seek else _random_seek()
+	print("SoundEffect.play. pitch_scale: ", pitch_scale, ", startin_seek: ", starting_seek, ", reparent_and_free: ", reparent_and_free)
 	play(starting_seek)
 	
 	if reparent_and_free:

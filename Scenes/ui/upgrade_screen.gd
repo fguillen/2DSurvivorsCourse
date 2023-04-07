@@ -58,7 +58,8 @@ func _trigger_discarded_animations(selected_ability_upgrade_card: AbilityUpgrade
 
 
 func _on_ability_upgrade_selected(ability_upgrade: AbilityUpgrade, selected_ability_upgrade_card: AbilityUpgradeCard):
-	emit_signal("ability_upgrade_selected", ability_upgrade)
+	print("XXX!")
+	ability_upgrade_selected.emit(ability_upgrade)
 	_trigger_discarded_animations(selected_ability_upgrade_card)
 
 
@@ -85,3 +86,7 @@ func _all_finished():
 
 
 # subclasses
+
+
+func perform():
+	pass # Replace with function body.
