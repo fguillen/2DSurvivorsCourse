@@ -13,6 +13,7 @@ extends CanvasLayer
 # 10. private variables
 # 11. onready variables
 @onready var background_fade: BackgroundFade = $BackgroundFade
+@onready var animation_player = $AnimationPlayer
 
 #
 # 12. optional built-in virtual _init method
@@ -27,6 +28,8 @@ func _ready():
 # 17. private methods
 # 18. signal listeners
 func _on_restart_button_pressed():
+	animation_player.play("out")
+	await animation_player.animation_finished
 	await background_fade.fade_out()
 	get_tree().paused = false
 	get_tree().reload_current_scene()

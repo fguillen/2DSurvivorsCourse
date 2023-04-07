@@ -57,6 +57,7 @@ _data = {
 }
 
 [node name="BackgroundFade" type="CanvasLayer"]
+layer = 0
 script = ExtResource("1_jjcig")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
