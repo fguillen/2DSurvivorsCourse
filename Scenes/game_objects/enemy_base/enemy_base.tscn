@@ -93,7 +93,7 @@ _data = {
 "walk": SubResource("Animation_4hha6")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pxrw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2kbmt"]
 resource_local_to_scene = true
 shader = ExtResource("10_b1sy8")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -145,7 +145,7 @@ replicate = true
 
 [node name="BlinkEffect" parent="Effects" node_paths=PackedStringArray("sprite") instance=ExtResource("9_1oqn7")]
 sprite = NodePath("../../FlipTowardsDirectionWrapper/Sprite2D")
-material = SubResource("ShaderMaterial_7pxrw")
+material = SubResource("ShaderMaterial_2kbmt")
 
 [node name="SoundEffect2D" parent="Effects" instance=ExtResource("11_hx4r0")]
 random_pitch = true

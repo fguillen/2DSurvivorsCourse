@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3cybq6gexdiq"]
+[gd_scene load_steps=8 format=3 uid="uid://c3cybq6gexdiq"]
 
 [ext_resource type="Script" path="res://Scenes/ui/end_screen.gd" id="1_os4or"]
 [ext_resource type="PackedScene" uid="uid://dt1sgt7ge327r" path="res://components/background_fade.tscn" id="2_oultt"]
+[ext_resource type="PackedScene" uid="uid://bl4chlsthddi5" path="res://Scenes/ui/sound_button.tscn" id="3_5x170"]
 
 [sub_resource type="Animation" id="Animation_vk6ru"]
 length = 0.001
@@ -115,11 +116,11 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RestartButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="RestartButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("3_5x170")]
 layout_mode = 2
 text = "Restart Game"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="QuitButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("3_5x170")]
 layout_mode = 2
 text = "Quit Game"
 

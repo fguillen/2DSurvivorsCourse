@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bl4chlsthddi5"]
+
+[ext_resource type="PackedScene" uid="uid://cn2dpqwf6wr1d" path="res://effects/sound_effect.tscn" id="1_5f4l2"]
+[ext_resource type="AudioStream" uid="uid://bxkf2lyrdgl4t" path="res://assets/sounds/button_click.wav" id="2_uwkgi"]
+
+[node name="SoundButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Button"
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="SoundEffect" parent="Effects" instance=ExtResource("1_5f4l2")]
+samples = Array[AudioStream]([ExtResource("2_uwkgi")])
+
+[connection signal="pressed" from="." to="Effects/SoundEffect" method="perform"]
