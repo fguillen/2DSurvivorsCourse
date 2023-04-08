@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d4h5p3n1nj8r"]
+[gd_scene load_steps=19 format=3 uid="uid://cs6b3g3nlm7iw"]
 
 [ext_resource type="Script" path="res://Scenes/game_objects/enemy_base/enemy_base.gd" id="1_6rqo2"]
 [ext_resource type="Texture2D" uid="uid://d08aui3up1gyw" path="res://Scenes/game_objects/enemy_base/enemy_base.png" id="1_iil1o"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bvlqim7863t6i" path="res://effects/floating_text.tscn" id="8_2uwwt"]
 [ext_resource type="PackedScene" uid="uid://dinlfgaorw876" path="res://effects/blink_effect.tscn" id="9_1oqn7"]
 [ext_resource type="Shader" path="res://effects/blink_effect.gdshader" id="10_b1sy8"]
-[ext_resource type="PackedScene" uid="uid://cn2dpqwf6wr1d" path="res://effects/sound_effect.tscn" id="11_atpcm"]
+[ext_resource type="PackedScene" uid="uid://c15f4fw5npvcu" path="res://effects/sound_effect_2d.tscn" id="11_hx4r0"]
 [ext_resource type="AudioStream" uid="uid://cqnr481s62rxy" path="res://assets/sounds/enemy_hurt.wav" id="12_d0aux"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5lm0i"]
@@ -93,7 +93,7 @@ _data = {
 "walk": SubResource("Animation_4hha6")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5oocg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7pxrw"]
 resource_local_to_scene = true
 shader = ExtResource("10_b1sy8")
 shader_parameter/color = Color(1, 1, 1, 1)
@@ -145,16 +145,17 @@ replicate = true
 
 [node name="BlinkEffect" parent="Effects" node_paths=PackedStringArray("sprite") instance=ExtResource("9_1oqn7")]
 sprite = NodePath("../../FlipTowardsDirectionWrapper/Sprite2D")
-material = SubResource("ShaderMaterial_5oocg")
+material = SubResource("ShaderMaterial_7pxrw")
 
-[node name="SoundEffect" parent="Effects" instance=ExtResource("11_atpcm")]
+[node name="SoundEffect2D" parent="Effects" instance=ExtResource("11_hx4r0")]
+random_pitch = true
 samples = Array[AudioStream]([ExtResource("12_d0aux")])
 
 [connection signal="died" from="." to="VialDropperComponent" method="drop"]
 [connection signal="died" from="." to="Effects/DeadEffect" method="perform"]
 [connection signal="out_of_health" from="HealthComponent" to="." method="die"]
-[connection signal="out_of_health" from="HealthComponent" to="Effects/SoundEffect" method="perform" binds= [true]]
+[connection signal="out_of_health" from="HealthComponent" to="Effects/SoundEffect2D" method="perform" binds= [true]]
 [connection signal="got_hurt" from="HurtboxComponent" to="HealthComponent" method="damage"]
 [connection signal="got_hurt" from="HurtboxComponent" to="Effects/FloatingText" method="perform"]
 [connection signal="got_hurt" from="HurtboxComponent" to="Effects/BlinkEffect" method="perform" unbinds=1]
-[connection signal="got_hurt" from="HurtboxComponent" to="Effects/SoundEffect" method="perform" unbinds=1]
+[connection signal="got_hurt" from="HurtboxComponent" to="Effects/SoundEffect2D" method="perform" unbinds=1]

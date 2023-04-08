@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://pr1ocrrkg6kb"]
+[gd_scene load_steps=9 format=3 uid="uid://pr1ocrrkg6kb"]
 
-[ext_resource type="PackedScene" uid="uid://d4h5p3n1nj8r" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="1_fm7og"]
+[ext_resource type="PackedScene" uid="uid://cs6b3g3nlm7iw" path="res://Scenes/game_objects/enemy_base/enemy_base.tscn" id="1_fm7og"]
 [ext_resource type="Texture2D" uid="uid://begpwt7kmsc1i" path="res://Scenes/game_objects/enemy_wizard/enemy_wizard.png" id="2_1esy4"]
+[ext_resource type="Shader" path="res://effects/blink_effect.gdshader" id="3_qeoej"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuvhp"]
 radius = 9.0
@@ -115,6 +116,12 @@ _data = {
 "walk": SubResource("Animation_500xp")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wfdt"]
+resource_local_to_scene = true
+shader = ExtResource("3_qeoej")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/percent = 0.0
+
 [node name="EnemyWizard" instance=ExtResource("1_fm7og")]
 damage = 2
 
@@ -139,3 +146,6 @@ libraries = {
 
 [node name="DeadEffect" parent="Effects" index="0"]
 texture = ExtResource("2_1esy4")
+
+[node name="BlinkEffect" parent="Effects" index="2"]
+material = SubResource("ShaderMaterial_5wfdt")

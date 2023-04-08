@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://effects/sound_effect.gd" id="1_flci2"]
 
-[node name="SoundEffect" type="AudioStreamPlayer2D"]
-max_distance = 300.0
-bus = &"SFX"
+[node name="SoundEffect" type="Node2D"]
 script = ExtResource("1_flci2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"

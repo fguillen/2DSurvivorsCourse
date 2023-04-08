@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c15f4fw5npvcu"]
+
+[ext_resource type="Script" path="res://effects/sound_effect_2d.gd" id="1_5eca1"]
+
+[node name="SoundEffect2D" type="Node2D"]
+script = ExtResource("1_5eca1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 300.0
+bus = &"SFX"
