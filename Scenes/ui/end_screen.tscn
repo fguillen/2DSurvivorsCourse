@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3cybq6gexdiq"]
+[gd_scene load_steps=11 format=3 uid="uid://cbrn2pa82d45k"]
 
 [ext_resource type="Script" path="res://Scenes/ui/end_screen.gd" id="1_os4or"]
 [ext_resource type="PackedScene" uid="uid://dt1sgt7ge327r" path="res://components/background_fade.tscn" id="2_oultt"]
 [ext_resource type="PackedScene" uid="uid://bl4chlsthddi5" path="res://Scenes/ui/sound_button.tscn" id="3_5x170"]
+[ext_resource type="PackedScene" uid="uid://cn2dpqwf6wr1d" path="res://effects/sound_effect.tscn" id="4_vgf7y"]
+[ext_resource type="AudioStream" uid="uid://m3uitkuic6tt" path="res://assets/sounds/victory_jingle.ogg" id="5_7bcet"]
+[ext_resource type="AudioStream" uid="uid://pry5cwcoqirc" path="res://assets/sounds/fail_jingle.ogg" id="6_dhqqc"]
 
 [sub_resource type="Animation" id="Animation_vk6ru"]
 length = 0.001
@@ -100,17 +103,19 @@ layout_mode = 2
 theme_override_constants/separation = 16
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
-text = "Victory"
+text = "Title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "You won!"
+text = "Description"
 vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
@@ -124,5 +129,24 @@ text = "Restart Game"
 layout_mode = 2
 text = "Quit Game"
 
+[node name="Effects" type="Node" parent="."]
+
+[node name="VictorySoundEffect" parent="Effects" instance=ExtResource("4_vgf7y")]
+samples = Array[AudioStream]([ExtResource("5_7bcet")])
+
+[node name="AudioStreamPlayer" parent="Effects/VictorySoundEffect" index="0"]
+volume_db = -8.0
+
+[node name="FailSoundEffect" parent="Effects" instance=ExtResource("4_vgf7y")]
+samples = Array[AudioStream]([ExtResource("6_dhqqc")])
+
+[node name="AudioStreamPlayer" parent="Effects/FailSoundEffect" index="0"]
+volume_db = -8.0
+
+[connection signal="fail" from="." to="Effects/FailSoundEffect" method="perform"]
+[connection signal="victory" from="." to="Effects/VictorySoundEffect" method="perform"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+
+[editable path="Effects/VictorySoundEffect"]
+[editable path="Effects/FailSoundEffect"]

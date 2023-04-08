@@ -23,6 +23,7 @@ buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 GameEvents="*res://Scenes/autoloads/game_events.tscn"
 GroupsUtils="*res://Scenes/autoloads/groups_utils.gd"
+BackgroundMusic="*res://Scenes/autoloads/background_music.tscn"
 
 [debug]
 

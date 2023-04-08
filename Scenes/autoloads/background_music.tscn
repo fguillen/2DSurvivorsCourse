@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bv0xy0pf4go0t"]
+
+[ext_resource type="AudioStream" uid="uid://dufv3vw2xuggs" path="res://assets/sounds/music.mp3" id="1_ysw6m"]
+[ext_resource type="Script" path="res://Scenes/autoloads/background_music.gd" id="2_nnw18"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_ysw6m")
+volume_db = -8.0
+script = ExtResource("2_nnw18")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,10 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bsa22pwkbrx7b"]
+[gd_scene load_steps=3 format=3 uid="uid://bsa22pwkbrx7b"]
 
 [ext_resource type="Script" path="res://Scenes/managers/end_screen_manager.gd" id="1_f37xv"]
-[ext_resource type="PackedScene" uid="uid://c3cybq6gexdiq" path="res://Scenes/ui/end_screen.tscn" id="2_lbrdl"]
-[ext_resource type="PackedScene" uid="uid://dln858qju4ji2" path="res://Scenes/ui/failure_screen.tscn" id="3_34m68"]
+[ext_resource type="PackedScene" uid="uid://cbrn2pa82d45k" path="res://Scenes/ui/end_screen.tscn" id="2_lbrdl"]
 
 [node name="EndScreenManager" type="Node"]
 script = ExtResource("1_f37xv")
-success_screen_scene = ExtResource("2_lbrdl")
-failure_screen_scene = ExtResource("3_34m68")
+end_screen_scene = ExtResource("2_lbrdl")

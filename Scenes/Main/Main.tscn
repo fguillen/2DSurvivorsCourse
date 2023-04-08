@@ -99,6 +99,6 @@ y_sort_enabled = true
 
 [connection signal="experience_updated" from="ExperienceManager" to="ExperienceBar" method="on_value_changed"]
 [connection signal="level_increased" from="ExperienceManager" to="UpgradeManager" method="show_upgrade_screen"]
-[connection signal="time_completed" from="ArenaTimeManager" to="EndScreenManager" method="show_success_screen"]
+[connection signal="time_completed" from="ArenaTimeManager" to="EndScreenManager" method="show_victory_screen"]
 [connection signal="difficulty_increased" from="DifficultyManager" to="EnemySpawner" method="set_difficulty_level"]
-[connection signal="has_died" from="EntitiesLayer/Player" to="EndScreenManager" method="show_failure_screen"]
+[connection signal="has_died" from="EntitiesLayer/Player" to="EndScreenManager" method="show_fail_screen"]

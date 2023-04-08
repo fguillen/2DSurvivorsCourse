@@ -9,8 +9,7 @@ extends Node
 # 06. enums
 # 07. constants
 # 08. exported variables
-@export var success_screen_scene: PackedScene
-@export var failure_screen_scene: PackedScene
+@export var end_screen_scene: PackedScene
 
 # 09. public variables
 # 10. private variables
@@ -21,17 +20,22 @@ extends Node
 # 14. built-in virtual _ready method
 # 15. remaining built-in virtual methods
 # 16. public methods
-func show_success_screen():
-	var success_screen = success_screen_scene.instantiate()
-	add_child(success_screen)
+func show_victory_screen():
+	print("EndScreenManager.show_victory_screen()")
+	_show_end_screen("victory")
 	
 	
-func show_failure_screen():
-	var failure_screen = failure_screen_scene.instantiate()
-	add_child(failure_screen)
+func show_fail_screen():
+	_show_end_screen("fail")
 
 	
 # 17. private methods
+func _show_end_screen(result: String):
+	var end_screen = end_screen_scene.instantiate()
+	end_screen.result = result
+	add_child(end_screen)
+	
+
 # 18. signal listeners
 # 19. subclasses
 
