@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brq02nvice0wv"]
+[gd_scene load_steps=4 format=3 uid="uid://brq02nvice0wv"]
 
 [ext_resource type="Script" path="res://Scenes/ui/upgrade_screen.gd" id="1_ch75s"]
 [ext_resource type="PackedScene" uid="uid://ceuaufu3bg86b" path="res://Scenes/ui/ability_upgrade_card.tscn" id="2_vovkd"]
 [ext_resource type="PackedScene" uid="uid://dt1sgt7ge327r" path="res://components/background_fade.tscn" id="3_h8e28"]
-[ext_resource type="PackedScene" uid="uid://cn2dpqwf6wr1d" path="res://effects/sound_effect.tscn" id="4_ils7m"]
-[ext_resource type="AudioStream" uid="uid://q8wbkhc4ue4v" path="res://assets/sounds/upgrade_pick.wav" id="5_psmgg"]
 
 [node name="UpgradeScreen" type="CanvasLayer"]
 process_mode = 3
@@ -27,12 +25,3 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-
-[node name="Effects" type="Node2D" parent="."]
-
-[node name="SoundEffect" parent="Effects" instance=ExtResource("4_ils7m")]
-attenuation = 0.00138107
-random_pitch = true
-samples = Array[AudioStream]([ExtResource("5_psmgg")])
-
-[connection signal="ability_upgrade_selected" from="." to="Effects/SoundEffect" method="perform" unbinds=1]

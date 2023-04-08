@@ -48,3 +48,7 @@ func _reparent():
 	current_scene.add_child(self)
 #	global_position = actual_position
 
+
+
+func _on_ability_upgrade_card_ability_upgrade_selected():
+	pass # Replace with function body.
