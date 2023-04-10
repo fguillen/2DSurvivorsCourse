@@ -14,6 +14,7 @@ extends CanvasLayer
 # -- 11 onready variables
 @onready var sfx_slider = %SFXSlider
 @onready var music_slider = %MusicSlider
+@onready var full_screen_check_button = %FullScreenCheckButton
 
 #
 # -- 12 optional built-in virtual _init method
@@ -29,6 +30,7 @@ func _ready():
 func _update_display():
 	sfx_slider.value = _get_bus_volume("SFX")
 	music_slider.value = _get_bus_volume("Music")
+	full_screen_check_button.button_pressed = _get_full_screen()
 	
 	
 func _get_bus_volume(bus_name: String) -> float:
@@ -42,6 +44,17 @@ func _set_bus_volume(bus_name: String, volume: float):
 	var volume_db = linear_to_db(volume)
 	AudioServer.set_bus_volume_db(bus_index, volume_db)
 	
+
+func _get_full_screen() -> bool:
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+	
+func _set_full_screen(value: bool):
+	if value: 
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	
 	
 # -- 18 signal listeners
 func _on_sfx_slider_value_changed(value):
@@ -51,7 +64,14 @@ func _on_sfx_slider_value_changed(value):
 func _on_music_slider_value_changed(value):
 	_set_bus_volume("Music", value)
 	
+	
+func _on_full_screen_check_button_toggled(button_pressed):
+	_set_full_screen(button_pressed)
+	
 # -- 19 subclasses
+
+
+
 
 
 
