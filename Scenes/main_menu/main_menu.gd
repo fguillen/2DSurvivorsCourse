@@ -9,6 +9,9 @@ extends CanvasLayer
 # -- 06 enums
 # -- 07 constants
 # -- 08 exported variables
+@export var options_menu_scene: PackedScene
+
+
 # -- 09 public variables
 # -- 10 private variables
 # -- 11 onready variables
@@ -19,13 +22,18 @@ extends CanvasLayer
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
 # -- 17 private methods
+func _show_options_menu():
+	var options_menu = options_menu_scene.instantiate()
+	add_child(options_menu)
+	
+	
 # -- 18 signal listeners
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/Main/Main.tscn")
 
 
 func _on_options_button_pressed():
-	pass # Replace with function body.
+	_show_options_menu()
 
 
 func _on_quit_button_pressed():

@@ -68,7 +68,14 @@ func _on_music_slider_value_changed(value):
 func _on_full_screen_check_button_toggled(button_pressed):
 	_set_full_screen(button_pressed)
 	
+
+func _on_back_button_pressed():
+	queue_free()
+	
 # -- 19 subclasses
+
+
+
 
 
 
