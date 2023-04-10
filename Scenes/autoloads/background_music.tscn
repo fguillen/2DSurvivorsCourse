@@ -7,6 +7,7 @@
 process_mode = 3
 stream = ExtResource("1_ysw6m")
 volume_db = -8.0
+bus = &"Music"
 script = ExtResource("2_nnw18")
 
 [node name="Timer" type="Timer" parent="."]
