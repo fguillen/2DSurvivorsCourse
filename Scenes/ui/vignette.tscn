@@ -72,6 +72,7 @@ _data = {
 }
 
 [node name="Vignette" type="CanvasLayer"]
+layer = 10
 script = ExtResource("1_cf6eg")
 
 [node name="ColorRect" type="ColorRect" parent="."]

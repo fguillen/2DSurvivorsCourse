@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://ch7ti6lj5te6y"]
+[gd_scene load_steps=6 format=3 uid="uid://ch7ti6lj5te6y"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu/main_menu.gd" id="1_ngu3y"]
 [ext_resource type="PackedScene" uid="uid://bl4chlsthddi5" path="res://Scenes/ui/sound_button.tscn" id="1_wywej"]
 [ext_resource type="PackedScene" uid="uid://b6k43v6pmb73g" path="res://Scenes/options_menu/options_menu.tscn" id="2_ns82e"]
 [ext_resource type="TileSet" uid="uid://fuipmlw8iyc1" path="res://environment/ground.tres" id="2_oexh8"]
+[ext_resource type="PackedScene" uid="uid://gkvp2e35dqwc" path="res://Scenes/ui/vignette.tscn" id="5_regem"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_ngu3y")
 options_menu_scene = ExtResource("2_ns82e")
+
+[node name="Vignette" parent="." instance=ExtResource("5_regem")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("2_oexh8")
