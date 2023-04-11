@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://b171mu024y2ee"]
+
+[ext_resource type="Script" path="res://Scenes/autoloads/scene_switcher/scene_switcher.gd" id="1_knx7q"]
+[ext_resource type="Shader" path="res://Scenes/autoloads/scene_switcher/scene_switcher.gdshader" id="1_vpgv6"]
+[ext_resource type="Texture2D" uid="uid://bvh0tspdbkncy" path="res://Scenes/autoloads/scene_switcher/screen_transition.png" id="2_62w38"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p3jvf"]
+shader = ExtResource("1_vpgv6")
+shader_parameter/color = Color(0.247059, 0.14902, 0.192157, 1)
+shader_parameter/percent = 0.0
+shader_parameter/transition_texture = ExtResource("2_62w38")
+
+[sub_resource type="Animation" id="Animation_s36bo"]
+resource_name = "in"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 3.03143),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jlpa2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/percent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rrwis"]
+_data = {
+"RESET": SubResource("Animation_jlpa2"),
+"in": SubResource("Animation_s36bo")
+}
+
+[node name="SceneSwitcher" type="CanvasLayer"]
+process_mode = 3
+layer = 20
+script = ExtResource("1_knx7q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_p3jvf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rrwis")
+}

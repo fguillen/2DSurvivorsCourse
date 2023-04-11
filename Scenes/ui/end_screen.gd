@@ -47,7 +47,7 @@ func _on_restart_button_pressed():
 	await animation_player.animation_finished
 	await background_fade.fade_out()
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	SceneSwitcher.switch_to("game")
 
 
 func _on_quit_button_pressed():

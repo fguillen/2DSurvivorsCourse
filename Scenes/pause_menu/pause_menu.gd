@@ -77,7 +77,7 @@ func _on_options_button_pressed():
 
 func _on_quit_button_pressed():
 	await _resume()
-	get_tree().change_scene_to_file("res://Scenes/main_menu/main_menu.tscn")
+	SceneSwitcher.switch_to("main_menu")
 	
 # -- 19 subclasses
 
