@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bl4chlsthddi5" path="res://Scenes/ui/sound_button.tscn" id="3_0v3tg"]
 
 [node name="OptionsMenu" type="CanvasLayer"]
-layer = 2
+layer = 4
 script = ExtResource("1_6qotp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

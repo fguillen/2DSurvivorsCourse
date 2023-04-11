@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://bvqjpfjr640p1"]
+[gd_scene load_steps=19 format=3 uid="uid://bvqjpfjr640p1"]
 
 [ext_resource type="PackedScene" uid="uid://dwpp4bl441cr3" path="res://Scenes/game_objects/Player/Player.tscn" id="1_3f0ui"]
 [ext_resource type="PackedScene" uid="uid://bch5jhr0j2hha" path="res://Scenes/spawners/enemy_spawner.tscn" id="1_23xqv"]
+[ext_resource type="PackedScene" uid="uid://c87xrvj0v16sm" path="res://Scenes/pause_menu/pause_menu.tscn" id="1_fasi6"]
 [ext_resource type="TileSet" uid="uid://fuipmlw8iyc1" path="res://environment/ground.tres" id="1_nile1"]
 [ext_resource type="PackedScene" uid="uid://c1uwkff5dc5lc" path="res://Scenes/managers/arena_time_manager.tscn" id="1_poucw"]
 [ext_resource type="PackedScene" uid="uid://gkvp2e35dqwc" path="res://Scenes/ui/vignette.tscn" id="1_xm518"]
@@ -19,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://b5k02ihpc3okp" path="res://Scenes/game_objects/experience_vial/experience_vial.tscn" id="14_r6vlc"]
 
 [node name="Main" type="Node"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_fasi6")]
 
 [node name="Vignette" parent="." instance=ExtResource("1_xm518")]
 

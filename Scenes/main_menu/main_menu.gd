@@ -29,14 +29,17 @@ func _show_options_menu():
 	
 # -- 18 signal listeners
 func _on_play_button_pressed():
+	print("XXX: _on_play_button_pressed")
 	get_tree().change_scene_to_file("res://Scenes/Main/Main.tscn")
 
 
 func _on_options_button_pressed():
+	print("XXX: _on_options_button_pressed")
 	_show_options_menu()
 
 
 func _on_quit_button_pressed():
+	print("XXX: _on_quit_button_pressed")
 	get_tree().quit()
 	
 # -- 19 subclasses
