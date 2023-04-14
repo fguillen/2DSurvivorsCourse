@@ -4,6 +4,7 @@ signal experiece_vial_collected(value: int)
 signal ability_upgrade_added(ability_upgrade: AbilityUpgrade)
 signal character_hurt(value: int)
 signal player_hurt(value: int)
+signal game_ended()
 
 
 func emit_experiece_vial_collected(value: int):
@@ -24,4 +25,8 @@ func emit_character_hurt(character: Node, damage: int):
 	
 func emit_player_hurt(damage: int):
 	player_hurt.emit(damage)
+	
+	
+func emit_game_ended():
+	game_ended.emit()
 	

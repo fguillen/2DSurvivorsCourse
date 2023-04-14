@@ -65,6 +65,7 @@ func _setup_fail():
 	fail.emit()	
 	title_label.text = "Fail"
 	description_label.text = "You have failed"
+	
 
 # 19. subclasses
 

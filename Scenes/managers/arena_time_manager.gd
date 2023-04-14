@@ -11,4 +11,5 @@ func get_elapsed_time() -> float:
 
 
 func _on_timer_timeout():
+	GameEvents.emit_game_ended()
 	emit_signal("time_completed")

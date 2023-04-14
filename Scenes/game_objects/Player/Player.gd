@@ -26,6 +26,7 @@ func _physics_process(delta):
 
 func die():
 	emit_signal("has_died")
+	GameEvents.emit_game_ended()
 	queue_free()
 	
 

@@ -12,6 +12,8 @@ config_version=5
 
 config/name="2d Survivors Course"
 run/main_scene="res://Scenes/main_menu/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="2DSurvivorTutorial"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -25,6 +27,7 @@ GameEvents="*res://Scenes/autoloads/game_events.tscn"
 GroupsUtils="*res://Scenes/autoloads/groups_utils.gd"
 BackgroundMusic="*res://Scenes/autoloads/background_music.tscn"
 SceneSwitcher="*res://Scenes/autoloads/scene_switcher/scene_switcher.tscn"
+MetaProgressionManager="*res://Scenes/autoloads/meta_progression_manager.tscn"
 
 [debug]
 

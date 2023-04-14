@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://ig7gv7xj70ge"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_ldcy1"]
+
+[resource]
+script = ExtResource("1_ldcy1")
+id = "vial_drop_increase_rate"
+max_quantity = 3
+title = "Vial Drop Increase Rate"
+description = "Increase the vial drop rate by 10%"
