@@ -43,7 +43,7 @@ window/stretch/mode="viewport"
 
 [gui]
 
-theme/custom="res://resources/theme/thene.tres"
+theme/custom="res://resources/theme/theme.tres"
 
 [input]
 

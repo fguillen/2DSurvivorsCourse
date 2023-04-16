@@ -46,6 +46,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 10
 
 [node name="GridContainer" type="GridContainer" parent="HBoxContainer/ScrollContainer/MarginContainer"]

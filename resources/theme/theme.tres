@@ -1,10 +1,10 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://csqllgktddm6b"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://csqllgktddm6b"]
 
-[ext_resource type="FontFile" uid="uid://cochvn7rao05x" path="res://resources/theme/Rockboxcond12.ttf" id="1_fp7mn"]
-[ext_resource type="Texture2D" uid="uid://c2iracqg31sl7" path="res://resources/theme/ui.png" id="1_w0bbb"]
+[ext_resource type="Texture2D" uid="uid://c2iracqg31sl7" path="res://resources/theme/ui.png" id="1_cu8h5"]
+[ext_resource type="FontFile" uid="uid://cochvn7rao05x" path="res://resources/theme/Rockboxcond12.ttf" id="2_70xe8"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pihpu"]
-texture = ExtResource("1_w0bbb")
+texture = ExtResource("1_cu8h5")
 texture_margin_left = 1.0
 texture_margin_top = 1.0
 texture_margin_right = 1.0
@@ -16,7 +16,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-texture = ExtResource("1_w0bbb")
+texture = ExtResource("1_cu8h5")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
@@ -28,7 +28,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-texture = ExtResource("1_w0bbb")
+texture = ExtResource("1_cu8h5")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
@@ -40,7 +40,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-texture = ExtResource("1_w0bbb")
+texture = ExtResource("1_cu8h5")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
@@ -52,7 +52,7 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-texture = ExtResource("1_w0bbb")
+texture = ExtResource("1_cu8h5")
 texture_margin_left = 3.0
 texture_margin_top = 3.0
 texture_margin_right = 3.0
@@ -60,7 +60,7 @@ texture_margin_bottom = 3.0
 region_rect = Rect2(4, 20, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dem2s"]
-atlas = ExtResource("1_w0bbb")
+atlas = ExtResource("1_cu8h5")
 region = Rect2(4, 20, 8, 8)
 
 [sub_resource type="Image" id="Image_m4xr8"]
@@ -76,7 +76,7 @@ data = {
 image = SubResource("Image_m4xr8")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgl8f"]
-atlas = ExtResource("1_w0bbb")
+atlas = ExtResource("1_cu8h5")
 region = Rect2(4, 20, 8, 8)
 
 [sub_resource type="Image" id="Image_la0jn"]
@@ -115,7 +115,7 @@ content_margin_bottom = 4.0
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jbvao"]
-texture = ExtResource("1_w0bbb")
+texture = ExtResource("1_cu8h5")
 texture_margin_left = 4.0
 texture_margin_top = 6.0
 texture_margin_right = 4.0
@@ -135,8 +135,46 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.247059, 0.14902, 0.192157, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np6yo"]
+bg_color = Color(0.894118, 0.611765, 0.184314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8w32k"]
+bg_color = Color(0.894118, 0.611765, 0.184314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqwrd"]
+bg_color = Color(0.894118, 0.611765, 0.184314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3pg2l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gv0w5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
 [resource]
-default_font = ExtResource("1_fp7mn")
+default_font = ExtResource("2_70xe8")
 default_font_size = 16
 AlternativePanelContainer/base_type = &"PanelContainer"
 AlternativePanelContainer/styles/panel = SubResource("StyleBoxTexture_pihpu")
@@ -163,3 +201,8 @@ Label/constants/line_spacing = 1
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_jbvao")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_bnhff")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_uaw8w")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_np6yo")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_8w32k")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_eqwrd")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_3pg2l")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_gv0w5")

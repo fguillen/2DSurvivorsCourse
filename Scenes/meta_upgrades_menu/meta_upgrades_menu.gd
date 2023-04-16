@@ -25,10 +25,10 @@ var _meta_upgrade_cards: Array[MetaUpgradeCard] = []
 # -- 14 built-in virtual _ready method
 func _ready():
 	# Cleaning debug elements
-#	for child in grid_container.get_children():
-#		child.queue_free()
-		
-#	_setup_cards()
+	for child in grid_container.get_children():
+		child.queue_free()
+
+	_setup_cards()
 	
 	
 # -- 15 remaining built-in virtual methods
