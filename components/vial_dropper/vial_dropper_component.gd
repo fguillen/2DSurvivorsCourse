@@ -17,11 +17,11 @@ extends Node
 # remaining built-in virtual methods
 # public methods
 func drop(position:Vector2):
-	if randf() > drop_chance:
-		return
-		
-	Callable(_drop_deferred).call_deferred(position)
+	var adjusted_drop_chance = drop_chance + (0.1 * MetaProgressionManager.upgrade_quantity("vial_drop_increase_rate"))
 	
+	if randf() <= adjusted_drop_chance:
+		Callable(_drop_deferred).call_deferred(position)
+		
 
 # private methods
 func _drop_deferred(position:Vector2):

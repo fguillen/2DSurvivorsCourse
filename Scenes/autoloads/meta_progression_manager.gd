@@ -47,6 +47,12 @@ func purchase(meta_upgrade: MetaUpgrade):
 	meta_upgrade_currency_changed.emit()
 	
 	
+func upgrade_quantity(upgrade_id: String) -> int:
+	if game_data.meta_upgrades.has(upgrade_id):
+		return game_data.meta_upgrades[upgrade_id].quantity
+	else:
+		return 0
+	
 
 func load_data():
 	if FileAccess.file_exists(DATA_FILE_PATH):
