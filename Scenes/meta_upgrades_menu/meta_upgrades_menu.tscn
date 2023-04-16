@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccmu4uqvetwsw"]
+[gd_scene load_steps=7 format=3 uid="uid://ccmu4uqvetwsw"]
 
 [ext_resource type="Script" path="res://Scenes/meta_upgrades_menu/meta_upgrades_menu.gd" id="1_wqiqi"]
 [ext_resource type="PackedScene" uid="uid://gkvp2e35dqwc" path="res://Scenes/ui/vignette.tscn" id="2_6ibex"]
 [ext_resource type="Resource" uid="uid://ig7gv7xj70ge" path="res://resources/meta_upgrades/meta_upgrade_vial_drop_rate_increase.tres" id="3_1n6lo"]
 [ext_resource type="TileSet" uid="uid://fuipmlw8iyc1" path="res://environment/ground.tres" id="3_uwv85"]
 [ext_resource type="PackedScene" uid="uid://y3rah4uyeny5" path="res://Scenes/ui/meta_upgrade_card.tscn" id="4_iqq8t"]
+[ext_resource type="PackedScene" uid="uid://bl4chlsthddi5" path="res://Scenes/ui/sound_button.tscn" id="6_wj2qx"]
 
 [node name="MetaUpgradesMenu" type="CanvasLayer"]
 layer = 4
@@ -25,13 +26,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_bottom = 12
 
-[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BackButton" parent="MarginContainer/HBoxContainer" instance=ExtResource("6_wj2qx")]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Back"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 6
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 3
+
+[node name="MetaUpgradeCard" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("4_iqq8t")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard2" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("4_iqq8t")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard3" parent="MarginContainer/HBoxContainer/GridContainer" instance=ExtResource("4_iqq8t")]
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

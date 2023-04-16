@@ -14,7 +14,9 @@ extends CanvasLayer
 var _scenes = {
 	"main_menu": "res://Scenes/main_menu/main_menu.tscn",
 	"game": "res://Scenes/Main/Main.tscn",
+	"meta_upgrades_menu": "res://Scenes/meta_upgrades_menu/meta_upgrades_menu.tscn",
 }
+
 # -- 11 onready variables
 @onready var animation_player = $AnimationPlayer
 

@@ -42,17 +42,17 @@ func _ready():
 # 16. public methods
 # 17. private methods
 # 18. signal listeners
-func _on_restart_button_pressed():
+func _on_continue_button_pressed():
 	animation_player.play("out")
 	await animation_player.animation_finished
 	await background_fade.fade_out()
 	get_tree().paused = false
-	SceneSwitcher.switch_to("game")
+	SceneSwitcher.switch_to("meta_upgrades_menu")
 
 
-func _on_quit_button_pressed():
+func _on_main_menu_button_pressed():
 	await background_fade.fade_out()
-	get_tree().quit()
+	SceneSwitcher.switch_to("main_menu")
 	
 
 func _setup_victory():
@@ -68,5 +68,4 @@ func _setup_fail():
 	
 
 # 19. subclasses
-
 

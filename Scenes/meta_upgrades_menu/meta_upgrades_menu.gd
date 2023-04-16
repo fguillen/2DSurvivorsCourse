@@ -24,6 +24,10 @@ var _meta_upgrade_cards: Array[MetaUpgradeCard] = []
 # -- 13 optional built-in virtual _enter_tree() method
 # -- 14 built-in virtual _ready method
 func _ready():
+	# Cleaning debug elements
+	for child in grid_container.get_children():
+		child.queue_free()
+		
 	_setup_cards()
 	
 	
@@ -45,5 +49,11 @@ func _setup_cards():
 func _on_purchased(meta_upgrade: MetaUpgrade):
 	MetaProgressionManager.purchase(meta_upgrade)
 	
+
+func _on_back_button_pressed():
+	SceneSwitcher.switch_to("main_menu")
+
 # -- 19 subclasses
+
+
 

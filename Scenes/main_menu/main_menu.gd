@@ -32,8 +32,11 @@ func _on_play_button_pressed():
 	SceneSwitcher.switch_to("game")
 
 
+func _on_upgrades_button_pressed():
+	SceneSwitcher.switch_to("meta_upgrades_menu")
+	
+
 func _on_options_button_pressed():
-	print("XXX: _on_options_button_pressed")
 	_show_options_menu()
 
 
@@ -42,7 +45,3 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 	
 # -- 19 subclasses
-
-
-
-
