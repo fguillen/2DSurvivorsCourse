@@ -6,6 +6,8 @@ extends Node
 # -- 04 # docstring
 #
 # -- 05 signals
+signal meta_upgrade_currency_changed()
+
 # -- 06 enums
 # -- 07 constants
 const DATA_FILE_PATH = "user://data.save"
@@ -32,13 +34,18 @@ func _ready():
 	
 # -- 15 remaining built-in virtual methods
 # -- 16 public methods
-func add_meta_upgrade(meta_upgrade: MetaUpgrade):
+func purchase(meta_upgrade: MetaUpgrade):
 	if not game_data.meta_upgrades.has(meta_upgrade.id):
 		game_data.meta_upgrades[meta_upgrade.id] = {
 			"quantity": 0
 		}
 	
 	game_data.meta_upgrades[meta_upgrade.id].quantity += 1
+	game_data.meta_upgrade_currency -= meta_upgrade.cost
+	
+	save_data()
+	meta_upgrade_currency_changed.emit()
+	
 	
 
 func load_data():
